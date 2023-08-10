@@ -1,0 +1,783 @@
+{% extends 'packages/base.html' %} {% load static %} {% block head %}
+<title>{{ package.packagehead.title }}</title>
+<meta name="description" content="{{ package.packagehead.description }} ">
+<meta name="keywords" content="{{ package.packagehead.keyword }}"> {% endblock head %} {% block twitterCard %}
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{package.name}} - {{package.duration}} Days">
+<meta name="twitter:description" content="{{package.about}}.">
+<meta name="twitter:image" content="https://uforangers.com/media/{{package.package_image}} ">
+<meta name="twitter:image:alt" content="{{package.name}}"> {% endblock twitterCard %} {% block SEOPackageDetailBreadCrumb %}
+<script type="application/ld+json">
+    {
+        "@context": "https://schema.org/",
+        "@type": "BreadcrumbList",
+        "itemListElement": [{
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home Page",
+            "item": "https://uforangers.com/"
+        }, {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "{{package.country}}",
+            "item": "https://uforangers.com/{{package.country.slug}}/"
+        }, {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "{{package.region}}",
+            "item": "https://uforangers.com/{{package.country.slug}}/{{package.region.slug}}/"
+        }, {
+            "@type": "ListItem",
+            "position": 4,
+            "name": "{{package.name}}",
+            "item": "https://uforangers.com/{{package.country.slug}}/{{package.region.slug}}/{{package.slug}}"
+        }]
+    }
+</script>
+{% endblock SEOPackageDetailBreadCrumb %} {% block SEOPackageDetail %}
+<script type="application/ld+json">
+    {
+        "@context": "https://schema.org/",
+        "@type": "Product",
+        "name": "{{package.name}} - {{package.duration}} DAYS",
+        "url": "https://uforangers.com/{{package.country.slug}}/{{package.region.slug}}/{{package.slug}}",
+        "image": "https://uforangers.com/media/{{package.package_image}}",
+        "description": "{{package.about}}",
+        "brand": "UFORangers Adventures",
+        "sku": "{{package.name}}",
+        "offers": {
+            "@type": "AggregateOffer",
+            "url": "https://uforangers.com/{{package.country.slug}}/{{package.region.slug}}/{{package.slug}}",
+            "priceCurrency": "{{package.get_currency_display}}",
+            "lowPrice": "{{package.group_cost}}",
+            "highPrice": "{{package.original_cost}}",
+            "availability": "http://schema.org/InStock"
+        }
+    }
+</script>
+{% endblock SEOPackageDetail %} {% block package_open_graph %}
+<meta property="og:type" content="product">
+<meta property="og:title" content="{{package.name}} - {{package.duration}} DAY">
+<meta property="og:url" content="https://uforangers.com/{{package.country.slug}}/{{package.region.slug}}/{{package.slug}}">
+<meta property="og:image" content="https://uforangers.com/media/{{package.package_image}}">
+<meta property="og:description" content="{{package.about}}">
+<meta property="product:plural_title" content="">
+<meta property="product:price.amount" content="{{package.group_cost}}">
+<meta property="product:price.currency" content="{{package.get_currency_display}}"> {% endblock package_open_graph %} {% block package_detail %}
+
+<style>
+    .trip-information {
+        background: #edecec url("/media/{{package.package_image}}") no-repeat scroll right top / 100%;
+        padding-bottom: 96px;
+        padding-top: 80px;
+    }
+    
+    .banner-area.details-one {
+        background: rgba(0,
+        0,
+        0,
+        0) url("/media/{{package.package_cover}}") no-repeat scroll center top / cover
+    }
+    
+    .icons {
+        height: 14px;
+    }
+    
+    .fa-star {
+        color: yellow;
+    }
+</style>
+<link rel="stylesheet" href="{% static 'main/css/tab.css' %}">
+<link rel="stylesheet" href="{% static 'main/css/packages.css' %}">
+<link rel="stylesheet" href="{% static 'main/css/responsive.css' %}">
+<!--Slider Area Start-->
+<!--Banner Area Start-->
+<div class="banner-area details-one">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section-title text-center">
+                    <div class="title-border">
+                        <h1>Experience <span>{{package.name}}</span></h1>
+                    </div>
+                    <p class="text-white">The right tour for the right traveller</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <ul class="breadcrumb">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="{% url 'country_packages' package.country.slug %}">{{ package.country }}</a></li>
+                    <li>
+                        <a href="{% url 'region_packages' package.country.slug package.region.slug %}">{{ package.region}}</a>
+                    </li>
+                    <li>
+                        {{package.name}}
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<!--End of Banner Area-->
+
+
+<!--Tab Start-->
+<div class="container">
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item active">
+            <a class="nav-link active" id="overview-tab" data-toggle="tab" href="#overview" role="tab" aria-controls="overview" aria-selected="true">Overview</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="quick_facts-tab" data-toggle="tab" href="#quick_facts" role="tab" aria-controls="quick_facts" aria-selected="false">Quick Facts</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="itinerary-tab" data-toggle="tab" href="#itinerary" role="tab" aria-controls="itinerary" aria-selected="false">Itinerary</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="detailed_itinerary-tab" data-toggle="tab" href="#detailed_itinerary" role="tab" aria-controls="detailed_itinerary" aria-selected="false">Detailed Itinerary </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="services-tab" data-toggle="tab" href="#services" role="tab" aria-controls="services" aria-selected="false">Services </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="dailyuse-tab" data-toggle="tab" href="#dailyuse" role="tab" aria-controls="dailyuse" aria-selected="false">Equipment Checklist </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="fitness-tab" data-toggle="tab" href="#fitness" role="tab" aria-controls="fitness" aria-selected="false">Fitness Preperation Guide </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="faqs-tab" data-toggle="tab" href="#faqs" role="tab" aria-controls="faqs" aria-selected="false">FAQS </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="reviews-tab" data-toggle="tab" href="#reviews" role="tab" aria-controls="reviews" aria-selected="false">Reviews </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="cost_date-tab" data-toggle="tab" href="#cost_date" role="tab" aria-controls="cost_date" aria-selected="true">Cost & Dates</a>
+        </li>
+    </ul>
+    <div style="margin-top: 20px;" class="tab-content" id="myTabContent">
+        <!--Trip Information Tab Start-->
+        <div class="trip-information tab-pane fade active in" id="overview" role="tabpanel" aria-labelledby="overview-tab">
+            <div class="container">
+                <div class="row">
+                    <div class="trip_overview">
+                        <div class="trip-info-left-text">
+                            <div class="section-title text-center">
+                                <div class="title-border">
+                                    <h1>Trip <span>Overview</span></h1>
+                                </div>
+                                <p>{{package.about}}</p>
+                            </div>
+                            <div class="clearfix"></div>
+                            <ul class="details-info">
+                                <li class=""><span><i class="fa fa-truck"></i>
+                                        Start</span>{{package.start_point}}</li>
+                                <li class=""><span><i class="fa fa-truck"></i> Finish</span>{{package.end_point}}
+                                </li>
+                                <li class=""><span><i class="fa fa-birthday-cake"></i> Age</span>MIN {{package.min_age}}
+                                </li>
+                                <li class=""><span><i class="fa fa-users"></i> Group</span>{{package.group_size}} People
+                                </li>
+                                <li class=""><span><i class="fa fa-flag"></i>
+                                        Country</span>{{package.country.country}}
+                                </li>
+                                <li class=""><span><i class="fa fa-clock-o"></i> Duration</span>{{package.duration}} days
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--End of Trip Tab Information-->
+        <!-- Start of Quick Facts Tab -->
+        <div class="trip-pricing-area section-padding tab-pane fade" id="quick_facts" role="tabpanel" aria-labelledby="quick_facts-tab">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="section-title text-center">
+                        <div class="title-border">
+                            <h1 class="text-white">Trip <span>Quick Facts</span></h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="table-responsive quick_facts">
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <td>
+                                <h5><img class="icons" src="{% static 'main/img/icon/svgs/solid/clock.svg' %}"> Duration
+                                </h5>
+                            </td>
+                            <td>
+                                <h5>{{package.duration}} days</h5>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <h5><img class="icons" src="{% static 'main/img/icon/svgs/solid/flag.svg' %}"> Country
+                                </h5>
+                            </td>
+                            <td>
+                                <h5>{{package.country.country}}</h5>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <h5><img class="icons" src="{% static 'main/img/icon/svgs/solid/mountain.svg' %}"> Max. Altitude
+                                </h5>
+                            </td>
+                            <td>
+                                <h5>{{package.max_alt}}</h5>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <h5><img class="icons" src="{% static 'main/img/icon/svgs/solid/hiking.svg' %}"> Walking Per Day</h5>
+                            </td>
+                            <td>
+                                <h5>{{package.walking}} hr</h5>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <h5><img class="icons" src="{% static 'main/img/icon/svgs/solid/home.svg' %}"> Accommodation
+                                </h5>
+                            </td>
+                            <td>
+                                <h5>Hotel & Lodge</h5>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <h5><img class="icons" src="{% static 'main/img/icon/svgs/solid/tachometer-alt.svg' %}"> Difficulty
+                                </h5>
+                            </td>
+                            <td>
+                                <h5>{{package.get_difficulty_display}}</h5>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <h5><img class="icons" src="{% static 'main/img/icon/svgs/solid/sun.svg' %}"> Best Season
+                                </h5>
+                            </td>
+                            <td>
+                                <h5>{{package.best_season}}</h5>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <h5><img class="icons" src="{% static 'main/img/icon/svgs/solid/users.svg' %}"> Group Size
+                                </h5>
+                            </td>
+                            <td>
+                                <h5>{{package.group_size}} People</h5>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- End of Quick Facts Tab -->
+        <!-- Start of Itinerary Tab -->
+        <div class="trip-pricing-area section-padding tab-pane fade" id="itinerary" role="tabpanel" aria-labelledby="itinerary-tab">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="section-title text-center">
+                        <div class="title-border">
+                            <h1 class="text-white">Trip <span>Itinerary</span></h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="itinerary">
+                {% if package.itinerary.itinerary %} {{package.itinerary.itinerary|safe}} {% else %} No itinerary has been added yet. {% endif %}
+            </div>
+        </div>
+        <!-- End of itinerary tab -->
+        <!-- Start of detailed itinerary tab -->
+        <div class="trip-pricing-area section-padding tab-pane fade" id="detailed_itinerary" role="tabpanel" aria-labelledby="detailed_itinerary-tab">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="section-title text-center">
+                        <div class="title-border">
+                            <h1 class="text-white">Trip <span>Detailed Itinerary</span></h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="detailed_itinerary">
+                {% if package.detaileditinerary.detailed_itinerary %} {{package.detaileditinerary.detailed_itinerary|safe}} {% else %} No detailed_itinerary has been added yet. {% endif %}
+            </div>
+        </div>
+        <!-- End of detailed itinerary tab -->
+        <!-- Start of services tab -->
+        <div class="trip-pricing-area section-padding tab-pane fade" id="services" role="tabpanel" aria-labelledby="services-tab">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="section-title text-center">
+                        <div class="title-border">
+                            <h1 class="text-white">Trip <span>Inclusions</span></h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% if package.packageinclution %}
+            <div class="container inclution">
+                <div class="row">
+                    <div class="col-md-4 col-sm-6">
+                        <div class="include-item">
+                            <div class="include-icon">
+                                <i class="fa fa-cutlery"></i>
+                            </div>
+                            <div class="include-text">
+                                <h4>Meals</h4>
+                                <p>{{package.packageinclution.breakfast}} breakfasts, {{package.packageinclution.lunch}} lunches, {{package.packageinclution.dinner}} dinners
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6">
+                        <div class="include-item">
+                            <div class="include-icon">
+                                <i class="fa fa-truck"></i>
+                            </div>
+                            <div class="include-text">
+                                <h4>Transport</h4>
+                                <p>{{package.packageinclution.vehicles}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 hidden-sm">
+                        <div class="include-item no-margin">
+                            <div class="include-icon">
+                                <i class="fa fa-home"></i>
+                            </div>
+                            <div class="include-text">
+                                <h4>Accommodation</h4>
+                                <p>{{package.packageinclution.accommodation}}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <h4>Other Include Services:</h4> <br> {{package.packageinclution.inclution|safe}}
+            </div>
+            <div style="margin-top: 40px; float: right;">
+                <!-- Button trigger modal -->
+                <button type="button" class="booking-button-two" data-toggle="modal" data-target="#exampleModalLong">
+                    Show Trip Exclusions
+                </button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h3 class="modal-title" id="exampleModalLongTitle">Trip Exclusions</h3>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                {{package.packageexclution.exclution|safe}}
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="booking-button-two" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% else %} No Services has been added yet. {% endif %}
+        </div>
+        <!-- End of service tab -->
+
+        <!-- Start of dailyuse tab -->
+        <div class="trip-pricing-area section-padding tab-pane fade" id="dailyuse" role="tabpanel" aria-labelledby="dailyuse-tab">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="section-title text-center">
+                        <div class="title-border">
+                            <h1 class="text-white">Trip <span>Daily Essentials</span></h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="daily_use">
+                {% if package.dailyuseitem.items %} {{package.dailyuseitem.items|safe}} {% else %} No Item has been added yet. {% endif %}
+            </div>
+        </div>
+        <!-- End of dailyuse tab -->
+        <!-- Start of fitness tab -->
+        <div class="trip-pricing-area section-padding tab-pane fade" id="fitness" role="tabpanel" aria-labelledby="fitness-tab">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="section-title text-center">
+                        <div class="title-border">
+                            <h1 class="text-white">Trip <span>Fitness Guide</span></h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="fitness_guide">
+                {% if package.fitnessguide.manual %} {{package.fitnessguide.manual|safe}} {% else %} No manual has been added yet.{% endif %}
+            </div>
+        </div>
+        <!-- End of fitness tab -->
+        <!-- Start of faqs tab -->
+        <div class="trip-pricing-area section-padding tab-pane fade" id="faqs" role="tabpanel" aria-labelledby="faqs-tab">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="section-title text-center">
+                        <div class="title-border">
+                            <h1 class="text-white">Trip <span>FAQS</span></h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="detailed_itinerary">
+                {% if package.faq.faq %} {{package.faq.faq|safe}} {% else %} No detailed_itinerary has been added yet. {% endif %}
+            </div>
+        </div>
+        <!-- End of faqs tab -->
+        <!-- Start of reviews -->
+        <div class="trip-pricing-area section-padding tab-pane fade" id="reviews" role="tabpanel" aria-labelledby="reviews-tab">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="section-title text-center">
+                        <div class="title-border">
+                            <h1 class="text-white">Trip <span>Reviews</span></h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row reviews">
+                <div class="col-lg-6">
+                    <div class="row total_rate">
+                        <div class="col-sm-6">
+                            <div class="box_total">
+                                <h5>Overall</h5>
+                                <h4>{{ total_ratings }}</h4>
+                                <h6><a href="">(See all {{ total_reviews }} Reviews)</a></h6>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="rating_list">
+                                <h3>Based on {{ total_reviews }} Reviews</h3>
+                                <ul class="list">
+                                    <li>
+                                        5 Star
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i> ({{ five_stars }})
+                                    </li>
+                                    <li>
+                                        <a href="#">4 Star
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star-o"></i>
+                                            ({{ four_stars }})
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">3 Star
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star-o"></i>
+                                            <i class="fa fa-star-o"></i>
+                                            ({{ three_stars }})
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">2 Star
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star-o"></i>
+                                            <i class="fa fa-star-o"></i>
+                                            <i class="fa fa-star-o"></i>
+                                            ({{ two_stars }})
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">1 Star
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star-o"></i>
+                                            <i class="fa fa-star-o"></i>
+                                            <i class="fa fa-star-o"></i>
+                                            <i class="fa fa-star-o"></i>
+                                            ({{ one_star }})
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="review_list">
+                        <h5>Latest Reviews</h5>
+                        {% for review in reviews %}
+                        <div style="border: 1px solid #eee; padding: 10px; margin-bottom: 20px;">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <img style="width: 50px; height: 50px; border-radius: 50%; border: 1px solid red;" src="{{review.user.profile.profile_picture.url}} " alt=" ">
+                                </div>
+                                <div class="col-md-8">
+                                    {{review.user}} <br> {{review.createdAt}} <br> {% if review.rating == 1 %}
+                                    <i class="fa fa-star "></i>
+                                    <i class="fa fa-star-o "></i>
+                                    <i class="fa fa-star-o "></i>
+                                    <i class="fa fa-star-o "></i>
+                                    <i class="fa fa-star-o "></i>
+                                    <i class="fa fa-star-o "></i> {% elif review.rating == 2 %}
+                                    <i class="fa fa-star "></i>
+                                    <i class="fa fa-star "></i>
+                                    <i class="fa fa-star-o "></i>
+                                    <i class="fa fa-star-o "></i>
+                                    <i class="fa fa-star-o "></i> {% elif review.rating == 3 %}
+                                    <i class="fa fa-star "></i>
+                                    <i class="fa fa-star "></i>
+                                    <i class="fa fa-star "></i>
+                                    <i class="fa fa-star-o "></i>
+                                    <i class="fa fa-star-o "></i> {% elif review.rating == 4 %}
+                                    <i class="fa fa-star "></i>
+                                    <i class="fa fa-star "></i>
+                                    <i class="fa fa-star "></i>
+                                    <i class="fa fa-star "></i>
+                                    <i class="fa fa-star-o "></i> {% else %}
+                                    <i class="fa fa-star "></i>
+                                    <i class="fa fa-star "></i>
+                                    <i class="fa fa-star "></i>
+                                    <i class="fa fa-star "></i>
+                                    <i class="fa fa-star "></i> {% endif %}
+                                </div>
+                                <div class="col-md-2">
+                                    <!-- Button trigger modal -->
+                                    <p data-toggle="modal" data-target="#exampleModalLongX">
+                                        <!-- See More -->
+                                    </p>
+
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="exampleModalLongX" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h3 class="modal-title" id="exampleModalLongTitle">Trip Exclusions
+                                                    </h3>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    {{review.content|safe}}
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="booking-button-two" data-dismiss="modal">Close</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-md-12" style="height: auto; max-height:200px; overflow-y: scroll;">
+                                    {{review.content|safe}}
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="review_box ">
+                        <h4>Add a Review</h4>
+                        {% include 'packages/review_form.html' %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End of reviews -->
+
+        <!-- Start of cost date tab -->
+        <div class="trip-pricing-area section-padding tab-pane fade" id="cost_date" role="tabpanel" aria-labelledby="cost_date-tab">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="section-title text-center">
+                        <div class="title-border">
+                            <h1 class="text-white ">Trip <span>Date &amp; Price</span></h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row schedule_table ">
+                <div class="col-md-8 table-tags ">
+                    <div class="table-content table-responsive ">
+                        <table class=" ">
+                            <thead>
+                                <tr>
+                                    <td class="trip-date ">
+                                        <div>Departure Date
+                                            <hr>
+                                        </div>
+                                    </td>
+                                    <td class="trip-status ">
+                                        <div>Available Seats
+                                            <hr>
+                                        </div>
+                                    </td>
+                                    <td class="trip-price ">
+                                        <div>Price<span> (per person)</span>
+                                            <hr>
+                                        </div>
+                                    </td>
+                                    <td class="trip-action ">
+                                        <div>Action
+                                            <hr>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="transparent " colspan="4 "></td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for schedule in schedules %}
+                                <tr>
+                                    <td class="trip-date ">
+                                        <div>{{schedule.start_date|date:"d M, Y "}} - {{schedule.end_date|date:"d M, Y "}}
+                                            <hr>
+                                        </div>
+                                    </td>
+                                    <td class="trip-status ">
+                                        <div>
+                                            <a style="cursor: pointer; font-weight: 500; color: #1b293a; " id="availableSeats{{schedule.id}}" onclick="availableSeats({{package.id}}, {{schedule.id}})">
+                                                <button type="button" class="btn btn-outline-info">Enquire Now</button>
+                                                <hr>
+                                            </a>
+                                        </div>
+                                    </td>
+                                    <td class="trip-price ">
+                                        <div>{{package.currency}} {{package.original_cost}}
+                                            <hr>
+                                        </div>
+                                    </td>
+                                    <td class="trip-action">
+                                        <div id="no-seats{{schedule.id}}">
+                                            <a style="color: #fff;" href="{% url 'book_package' package.country.slug package.region.slug package.slug schedule.id %}">
+                                                <button id="book-seat{{schedule.id}}" class="btn btn-outline-info hide" style="background-color: rgb(79, 151, 79);">
+                                                    Book Now
+                                                </button>
+                                            </a>
+                                            <hr>
+                                        </div>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="col-md-4 group_discount_table ">
+                    <div class="group-tag ">
+                        <i class="fa fa-group "></i> Group Discount
+                    </div>
+                    <div class="group_discount_cost ">
+                        <h4><b>{{package.duration}} days</b>
+                            <i>from </i> <del>{{package.currency}} {{package.original_cost}}<br></del>
+                        </h4>
+                        <h2>{{package.currency}} {{package.group_cost}}<sup>pp</sup></h2>
+                        <div class="saved_amount ">
+                            <h6>Save {{package.currency}}{{discount}}pp</h6>
+                        </div>
+                    </div>
+                    {% if flexible_costs %}
+                    <div class="row ">
+                        <p>We offer group discounts</p>
+                        <hr>
+                        <div class="col-md-6 ">
+                            <b>No. of persons</b><br>
+                            <hr>
+                            <div class="row ">
+                                {% for cost in flexible_costs %}
+                                <div class="col-md-12 ">
+                                    {{cost.person_range}}
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <div class="col-md-6 ">
+                            <b>Cost per person</b><br>
+                            <hr>
+                            <div class="row ">
+                                {% for cost in flexible_costs %}
+                                <div class="col-md-12 ">
+                                    {{package.currency}} {{cost.flex_cost}}
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+                    <hr>
+                    <div class="package_extra_features">
+                        <p><i class="fa fa-check-circle" aria-hidden="true"></i> Best Price Guarantee</p>
+                        <p><i class="fa fa-check-circle" aria-hidden="true"></i> Hassle-Free Booking </p>
+                        <p><i class="fa fa-check-circle" aria-hidden="true"></i> No Booking or Credit Card Fees</p>
+                        <p><i class="fa fa-check-circle" aria-hidden="true"></i> Team of highly experienced Experts</p>
+                        <p><i class="fa fa-check-circle" aria-hidden="true"></i> Best Price Guarantee</p>
+                        <p><i class="fa fa-check-circle" aria-hidden="true"></i> Your Happiness Guaranteed</p>
+                    </div>
+                    <hr>
+                    <div class="package_on_request">
+                        <p>Cannot find any schedule upto your needs. We have</p>
+                        <p>On Request <a href="{% url 'on_request_booking' package.country.slug package.region.slug package.slug %}"><b><i>Booking</i></b></a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End of cost date tab -->
+
+    </div>
+</div>
+<!--End of Tab-->
+
+<div class="trip-gallery section-padding tab-pane " id="gallery " role="tabpanel " aria-labelledby="gallery-tab ">
+    <div class="container ">
+        <div class="row ">
+            <div class="col-md-12 ">
+                <div class="section-title text-center ">
+                    <div class="title-border ">
+                        <h1>Trip <span>Gallery</span></h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row ">
+            <div class="row ">
+                <div class="best-sell-slider carousel-style-one ">
+                    {% for image in gallery %}
+                    <div class="col-md-3 ">
+                        <div class="hover-effect ">
+                            <div class="box-hover ">
+                                <img src="/media/{{image.image}} " alt=" ">
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock package_detail %}

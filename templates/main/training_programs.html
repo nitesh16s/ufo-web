@@ -1,0 +1,119 @@
+{% extends 'main/base.html' %} {% load static %} {% block head %}
+<title>Fitness Training Programs</title>
+<meta name="description" content="Best in class personalised fitness
+programs for soft and hard fitness and Fitness, Training, Wellness, Goal Based Training
+training activites.">
+<meta name="keywords" content="in home personal training, personal training, 6 week fitness training program, 12 week fitness training program, crossfit training, home workout plan, goal based training programs, sports fitness program"> {% endblock head %} {% block training_programs %}
+<link rel="stylesheet" href="{% static 'main/css/packages.css' %}">
+
+<!--Banner Area Start-->
+<div class="banner-area grid">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section-title text-center">
+                    <div class="title-border">
+                        <h1>Our <span>Training Programs</span></h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <ul class="breadcrumb">
+                    <li><a href="/">Home</a></li>
+                    <li>Training Programs</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!--End of Banner Area-->
+<!--Adventures Grid Start-->
+<div class="adventures-grid section-padding">
+    <div class="container">
+        <div class="row allpackages">
+            {% for package in packages %}
+            <div class="col-md-6 col-sm-6 ">
+                <div class="single-portfolio">
+                    {% if package.booking_option %}
+                    <div class="pacakge-cost" style="margin-bottom: 20px; padding: 10px;">
+                        <small>
+                            <a style=" color: rgba(255, 255, 255, 0.75); " href="{% url 'on_request_booking' package.country.slug package.region.slug package.slug %} ">
+                                On Request Booking.
+                            </a>
+                        </small>
+                    </div>
+                    {% else %}
+                    <div class="pacakge-cost ">
+                        <small><i>from </i><del>{{package.currency}} {{package.original_cost}}</del></small>
+                        <p>{{package.currency}} <strong>{{package.group_cost}}</strong><small><sup>pp</sup></small>
+                        </p>
+                        <small>{{package.get_gst_option_display}}</small>
+                    </div>
+                    {% endif %} {% if package.category.id == 1 %}
+                    <div class="package-tags " style="background-color: rgba(0,182,0,0.8); ">
+                        <i class="fa fa-star "></i> <strong>{{package.category}}</strong>
+                    </div>
+                    {% elif package.category.id == 2 %}
+                    <div class="package-tags " style="background-color: rgba(250,100,0,0.8); ">
+                        <i class="fa fa-group "></i> {{package.category}}
+                    </div>
+                    {% else %}
+                    <div class="package-tags " style="background-color: rgba(171,24,47,0.8); ">
+                        <i class="fa fa-lock "></i> {{package.category}}
+                    </div>
+                    {% endif %}
+                    <a href="{% url 'package_detail' package.country.slug package.region.slug package.slug %} ">
+                        <img class="package-image " src="/media/{{package.package_image}} " alt="{{ package.name }} in {{ package.country }}">
+                    </a>
+                    <div class="package-bottom ">
+                        <div class="package-name ">
+                            <a href="{% url 'package_detail' package.country.slug package.region.slug package.slug %} ">
+                                <i class="fa fa-map-marker "></i> {{package.name}} - {{package.duration}} days.
+                            </a>
+                        </div>
+                        <div class="row package-detail ">
+                            <div class="col-md-4 col-sm-4 ">
+                                <div class="row ">
+                                    <div class="col-md-4 ">
+                                        <img class="package-activity-image " src="{% static 'main/img/icon/svgs/solid/hiking.svg' %} ">
+                                    </div>
+                                    <div class="col-md-8 ">
+                                        <small>Activity</small>
+                                        <p class="activity-scroll ">{% for activity in package.activity.all %} <small>{{activity}},</small> {% endfor %}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-4 ">
+                                <div class="row ">
+                                    <div class="col-md-4 ">
+                                        <img class="package-activity-image " src="{% static 'main/img/icon/svgs/solid/clock.svg' %} ">
+                                    </div>
+                                    <div class="col-md-8 ">
+                                        <small>Duration</small>
+                                        <p>{{package.duration}} days</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-4 ">
+                                <div class="row ">
+                                    <div class="col-md-4 ">
+                                        <img class="package-activity-image " src="{% static 'main/img/icon/svgs/solid/tachometer-alt.svg' %} ">
+                                    </div>
+                                    <div class="col-md-8 ">
+                                        <small>Grade</small>
+                                        <p>{{package.get_difficulty_display}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+<!--End of Adventures Grid-->
+{% endblock training_programs %}

@@ -1,0 +1,493 @@
+/* My CSS */
+
+.info {
+    margin-top: 30px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #1b2b3a;
+    letter-spacing: 1px;
+}
+
+.info>p {
+    float: right;
+}
+
+.expert-img {
+    float: right;
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+    border: 1px solid rgb(26, 26, 41);
+    margin-left: 10px;
+}
+
+.profile-right {
+    margin-top: 5px;
+    padding: 10px;
+}
+
+.profile-right>a>p {
+    float: right;
+    color: #a4d6f3;
+    font-weight: 600;
+    font-size: 14px;
+    margin-top: 15px;
+    margin-left: 10px;
+}
+
+.profile-right>a>img {
+    border: 1px solid #a4d6f3;
+    float: right;
+    height: 46px;
+    width: 46px;
+    border-radius: 50%;
+}
+
+.search-box {
+    position: absolute;
+    top: 40%;
+    width: 60%;
+    left: 20%;
+    right: 20%;
+    display: block;
+    text-align: center;
+}
+
+.search-form {
+    font-size: 20px;
+    font-weight: 600;
+    height: 80px;
+    width: 100%;
+    border: none;
+    border-radius: 40px;
+    display: block;
+    padding: 10px;
+}
+
+.search-form>button {
+    width: 60px;
+    height: 60px;
+    border-radius: 40px;
+    background-color: rgb(25, 41, 54, 0.8);
+}
+
+.search-form>input {
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 600;
+    height: 60px;
+    width: 80%;
+    border: none;
+    border-radius: 40px;
+    color: #1b2b3a;
+    padding: 20px;
+}
+
+.search-box>h2 {
+    font-family: 'themify';
+    font-size: 50px;
+    font-weight: 600;
+}
+
+.search-box>.second-thing {
+    font-size: 25px;
+    font-weight: 600;
+    font-family: "Rustico-Regular", "Courier", sans-serif, italic;
+}
+
+.perfectTripsResults {
+    text-align: left;
+    width: 50%;
+    margin: auto;
+    padding: 10px;
+    background-color: #fff;
+}
+
+.perfectTripsResults>a {
+    letter-spacing: 1px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #1b2b3a;
+    padding: 10px;
+}
+
+
+/* Large desktop :1920px. */
+
+@media (min-width: 1920px) {
+    .info {
+        margin-top: 30px;
+        font-size: 16px;
+        font-weight: 600;
+        color: #1b2b3a;
+        letter-spacing: 1px;
+    }
+    .info>p {
+        float: right;
+    }
+    .expert-img {
+        float: right;
+        border-radius: 50%;
+        height: 50px;
+        width: 50px;
+        border: 1px solid rgb(26, 26, 41);
+        margin-left: 10px;
+    }
+    .profile-right {
+        margin-top: 5px;
+        padding: 10px;
+    }
+    .profile-right>a>p {
+        float: right;
+        color: #a4d6f3;
+        font-weight: 600;
+        font-size: 14px;
+        margin-top: 15px;
+        margin-left: 10px;
+    }
+    .profile-right>a>img {
+        border: 1px solid #a4d6f3;
+        float: right;
+        height: 46px;
+        width: 46px;
+        border-radius: 50%;
+    }
+    .search-box {
+        position: absolute;
+        top: 40%;
+        width: 60%;
+        left: 20%;
+        right: 20%;
+        display: block;
+        text-align: center;
+    }
+    .search-form {
+        font-size: 20px;
+        font-weight: 600;
+        height: 80px;
+        width: 100%;
+        border: none;
+        border-radius: 40px;
+        display: block;
+        padding: 10px;
+    }
+    .search-form>button {
+        width: 60px;
+        height: 60px;
+        border-radius: 40px;
+        background-color: rgb(25, 41, 54, 0.8);
+    }
+    .search-form>input {
+        font-family: inherit;
+        font-size: 16px;
+        font-weight: 600;
+        height: 60px;
+        width: 80%;
+        border: none;
+        border-radius: 40px;
+        color: #1b2b3a;
+        padding: 20px;
+    }
+    .search-box>h2 {
+        font-family: 'themify';
+        font-size: 50px;
+        font-weight: 600;
+    }
+    .search-box>.second-thing {
+        font-size: 25px;
+        font-weight: 600;
+        font-family: "Rustico-Regular", "Courier", sans-serif, italic;
+    }
+}
+
+
+/* Normal desktop :992px. */
+
+@media (min-width: 992px) and (max-width: 1169px) {
+    /* My CSS */
+    .info {
+        margin-top: 30px;
+        font-size: 16px;
+        font-weight: 600;
+        color: #1b2b3a;
+        letter-spacing: 1px;
+    }
+    .info>p {
+        float: right;
+    }
+    .expert-img {
+        float: right;
+        border-radius: 50%;
+        height: 50px;
+        width: 50px;
+        border: 1px solid rgb(26, 26, 41);
+        margin-left: 10px;
+    }
+    .profile-right {
+        margin-top: 5px;
+        padding: 10px;
+    }
+    .profile-right>a>p {
+        float: right;
+        color: #a4d6f3;
+        font-weight: 600;
+        font-size: 14px;
+        margin-top: 15px;
+        margin-left: 10px;
+    }
+    .profile-right>a>img {
+        border: 1px solid #a4d6f3;
+        float: right;
+        height: 46px;
+        width: 46px;
+        border-radius: 50%;
+    }
+    .search-box {
+        position: absolute;
+        top: 40%;
+        width: 60%;
+        left: 20%;
+        right: 20%;
+        display: block;
+        text-align: center;
+    }
+    .search-form {
+        font-size: 20px;
+        font-weight: 600;
+        height: 80px;
+        width: 100%;
+        border: none;
+        border-radius: 40px;
+        display: block;
+        padding: 10px;
+    }
+    .search-form>button {
+        width: 60px;
+        height: 60px;
+        border-radius: 40px;
+        background-color: rgb(25, 41, 54, 0.8);
+    }
+    .search-form>input {
+        font-family: inherit;
+        font-size: 16px;
+        font-weight: 600;
+        height: 60px;
+        width: 80%;
+        border: none;
+        border-radius: 40px;
+        color: #1b2b3a;
+        padding: 20px;
+    }
+    .search-box>.first-thing {
+        font-family: 'themify';
+        font-size: 40px;
+        font-weight: 600;
+    }
+    .search-box>.second-thing {
+        font-size: 25px;
+        font-weight: 600;
+        font-family: "Rustico-Regular", "Courier", sans-serif, italic;
+    }
+}
+
+
+/* Tablet desktop :768px. */
+
+@media (min-width: 768px) and (max-width: 991px) {
+    /* My CSS */
+    .info {
+        margin-top: 30px;
+        font-size: 16px;
+        font-weight: 600;
+        color: #1b2b3a;
+        letter-spacing: 1px;
+    }
+    .info>p {
+        float: right;
+    }
+    .expert-img {
+        float: right;
+        border-radius: 50%;
+        height: 50px;
+        width: 50px;
+        border: 1px solid rgb(26, 26, 41);
+        margin-left: 10px;
+    }
+    .profile-right {
+        margin-top: 5px;
+        padding: 10px;
+    }
+    .profile-right>a>p {
+        float: right;
+        color: #a4d6f3;
+        font-weight: 600;
+        font-size: 14px;
+        margin-top: 15px;
+        margin-left: 10px;
+    }
+    .profile-right>a>img {
+        border: 1px solid #a4d6f3;
+        float: right;
+        height: 46px;
+        width: 46px;
+        border-radius: 50%;
+    }
+    .search-box {
+        position: absolute;
+        top: 30%;
+        width: 80%;
+        left: 10%;
+        right: 10%;
+        display: block;
+        text-align: center;
+    }
+    .search-form {
+        font-size: 20px;
+        font-weight: 600;
+        height: 80px;
+        width: 100%;
+        border: none;
+        border-radius: 40px;
+        display: block;
+        padding: 10px;
+    }
+    .search-form>button {
+        width: 50px;
+        height: 50px;
+        border-radius: 40px;
+        background-color: rgb(25, 41, 54, 0.8);
+    }
+    .search-form>input {
+        font-family: inherit;
+        font-size: 15px;
+        font-weight: 600;
+        height: 50px;
+        width: 80%;
+        border: none;
+        border-radius: 40px;
+        color: #1b2b3a;
+        padding: 20px;
+    }
+    .search-box>.first-thing {
+        font-family: 'themify';
+        font-size: 30px;
+        font-weight: 600;
+    }
+    .search-box>.second-thing {
+        font-size: 20px;
+        font-weight: 600;
+        font-family: "Rustico-Regular", "Courier", sans-serif, italic;
+    }
+}
+
+
+/* Large Mobile :480px. */
+
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+    /* My CSS */
+    .info {
+        display: none;
+    }
+    .profile-right {
+        display: none;
+    }
+    .search-box {
+        position: absolute;
+        top: 30%;
+        width: 80%;
+        left: 10%;
+        right: 10%;
+        display: block;
+        text-align: center;
+    }
+    .search-form {
+        font-size: 20px;
+        font-weight: 600;
+        height: 80px;
+        width: 100%;
+        border: none;
+        border-radius: 40px;
+        display: block;
+        padding: 10px;
+    }
+    .search-form>button {
+        width: 40px;
+        height: 40px;
+        border-radius: 40px;
+        background-color: rgb(25, 41, 54, 0.8);
+    }
+    .search-form>input {
+        font-family: inherit;
+        font-size: 12px;
+        font-weight: 600;
+        height: 40px;
+        border: none;
+        border-radius: 40px;
+        color: #1b2b3a;
+        padding: 20px;
+    }
+    .search-box>.first-thing {
+        font-family: 'themify';
+        font-size: 30px;
+        font-weight: 600;
+    }
+    .search-box>.second-thing {
+        font-size: 20px;
+        font-weight: 600;
+        font-family: "Rustico-Regular", "Courier", sans-serif, italic;
+    }
+}
+
+
+/* small mobile :320px. */
+
+@media (max-width: 767px) {
+    /* My CSS */
+    .info {
+        display: none;
+    }
+    .profile-right {
+        display: none
+    }
+    .search-box {
+        position: absolute;
+        top: 20%;
+        left: 0;
+        width: 100%;
+        display: block;
+        text-align: center;
+    }
+    .search-form {
+        font-size: 20px;
+        font-weight: 600;
+        width: 100%;
+        border: none;
+        border-radius: 40px;
+        display: block;
+    }
+    .search-form>button {
+        width: 40px;
+        height: 40px;
+        border-radius: 40px;
+        background-color: rgb(25, 41, 54, 0.8);
+    }
+    .search-form>input {
+        width: 80%;
+        font-family: inherit;
+        font-size: 12px;
+        font-weight: 600;
+        height: 40px;
+        border: none;
+        border-radius: 40px;
+        color: #1b2b3a;
+        padding: 20px;
+    }
+    .search-box>.first-thing {
+        display: none
+    }
+    .search-box>.second-thing {
+        font-size: 15px;
+        font-weight: 600;
+        font-family: "Rustico-Regular", "Courier", sans-serif, italic;
+    }
+}

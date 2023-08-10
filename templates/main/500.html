@@ -1,0 +1,20 @@
+{% extends 'main/base.html' %} {% block 500 %}
+<div class="error-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="error-text-container">
+                    <h1>Oops...</h1>
+                    <h2>Page Not Found!</h2>
+                    <form id="text-search" action="#">
+                        <input type="text" placeholder="Search Here .....">
+                        <button class="submit"><i class="fa fa-search"></i></button>
+                    </form>
+                    <p>Sorry the Page Could not be Found here.<br> Try using the button below to go to main page<br> of the site</p>
+                    <a href="{% url 'index' %}">Go to home</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock 500 %}

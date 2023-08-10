@@ -1,0 +1,5 @@
+{% load crispy_forms_tags %}
+<form method="POST" action="{% url 'create_comment' blog.slug %}" enctype="multipart/form-data">
+    {% csrf_token %} {{comment_form.media}} {{comment_form|crispy}}
+    <input type="submit" class="comment-btn" value="Add comment">
+</form>

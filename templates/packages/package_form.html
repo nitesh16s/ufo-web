@@ -1,0 +1,51 @@
+{% extends 'packages/base.html' %} {% block package_form %} {% load crispy_forms_tags %}
+<style>
+    .banner-area.list {
+        background: rgba(0, 0, 0, 0) url("/static/main/img/banner/10.webp") no-repeat scroll center top / cover;
+        padding-bottom: 149px;
+        padding-top: 244px;
+    }
+    
+    .django-ckeditor-widget {
+        width: 1200px;
+    }
+</style>
+<!--Banner Area Start-->
+<div class="banner-area list">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section-title title-three text-center">
+                    <div class="title-border">
+                        <h1>New <span>Package</span></h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <ul class="breadcrumb three">
+                    <li><a href="{% url 'index' %}">Home</a></li>
+                    <li>Package</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!--End of Banner Area-->
+<!--Adventures Grid Start-->
+<div class="adventures-grid section-padding list">
+    <div class="container">
+        <div class="leave-comment">
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %} {{form.media}}
+                <div class="comment-form">
+                    {% csrf_token %} {{form|crispy}}
+                    <button class="booking-button-two">Add Package</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!--End of Adventures Grid-->
+{% endblock package_form %}

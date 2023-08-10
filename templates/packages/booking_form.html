@@ -1,0 +1,52 @@
+{% extends 'packages/base.html' %} {% block booking_form %} {% load crispy_forms_tags %} {% load bootstrap3 %} {% bootstrap_css %} {% bootstrap_javascript jquery='full' %}
+
+<style>
+    .banner-area.list {
+        background: rgba(0, 0, 0, 0) url("/static/main/img/banner/10.webp") no-repeat scroll center top / cover;
+        padding-bottom: 149px;
+        padding-top: 244px;
+    }
+    
+    .django-ckeditor-widget {
+        width: 100%;
+    }
+</style>
+
+<!--Banner Area Start-->
+<div class="banner-area list">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section-title title-three text-center">
+                    <div class="title-border">
+                        <h1>Booking <span>Form</span></h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <ul class="breadcrumb three">
+                    <li><a href="{% url 'index' %}">Home</a></li>
+                    <li>Booking</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!--End of Banner Area-->
+<!--Adventures Grid Start-->
+<div class="adventures-grid section-padding list">
+    <div class="container">
+        <div class="row">
+            <div class="leave-comment" style="width: 90%; margin: auto;">
+                <form method="POST">
+                    {% csrf_token %} {{form.media}} {{form|crispy}} <small><a style="color: #1a2b3a;" href="{% url 'about' %}">Terms & Conditions</a></small>
+                    <button class="submit-button">Confirm Booking </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!--End of Adventures Grid-->
+{% endblock booking_form %}

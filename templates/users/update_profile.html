@@ -1,0 +1,97 @@
+{% extends 'users/base.html' %} {% block update_profile %} {% load crispy_forms_tags %}
+<style>
+    .banner-area.list {
+        background: rgba(0, 0, 0, 0) url("/media/{{request.user.profile.cover_photo}}") no-repeat scroll center top / cover;
+        padding-bottom: 149px;
+        padding-top: 244px;
+    }
+    
+    .django-ckeditor-widget {
+        width: 1200px;
+    }
+</style>
+<!--Banner Area Start-->
+<div class="banner-area list">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section-title title-three text-center">
+                    <div class="title-border">
+                        <h1>Update <span>Profile</span></h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <ul class="breadcrumb three">
+                    <li><a href="{% url 'index' %}">Home</a></li>
+                    <li>Profile</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!--End of Banner Area-->
+<!--Adventures Grid Start-->
+<div class="adventures-grid section-padding list">
+    <div class="container">
+        <div class="leave-comment">
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %} {{form.media}}
+                <div class="comment-form">
+                    <div class="row">
+                        <div class="col-md-6">
+                            {{form.mobile|as_crispy_field}}
+                        </div>
+                        <div class="col-md-6">
+                            {{form.dob|as_crispy_field}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            {{form.about|as_crispy_field}}
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            {{form.city|as_crispy_field}}
+                        </div>
+                        <div class="col-md-6">
+                            {{form.gender|as_crispy_field}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            {{form.street|as_crispy_field}}
+                        </div>
+                        <div class="col-md-6">
+                            {{form.house|as_crispy_field}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            {{form.state|as_crispy_field}}
+                        </div>
+                        <div class="col-md-6">
+                            {{form.country|as_crispy_field}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            {{form.profile_picture|as_crispy_field}}
+                        </div>
+                        <div class="col-md-6">
+                            {{form.cover_photo|as_crispy_field}}
+                        </div>
+                    </div>
+                    <button class="booking-button-two">Update Profile</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!--End of Adventures Grid-->
+
+{% endblock update_profile %}

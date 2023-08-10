@@ -1,0 +1,58 @@
+{% load static %} {% load crispy_forms_tags %} {% include 'main/nav.html' %}
+
+<style>
+    .django-ckeditor-widget {
+        width: 100%;
+    }
+</style>
+
+<!--Banner Area Start-->
+<div class="banner-area list">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section-title title-three text-center">
+                    <div class="title-border">
+                        <h1>Payment <span>Details</span></h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <ul class="breadcrumb three">
+                    <li><a href="{% url 'index' %}">Home</a></li>
+                    <li>Payment</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!--End of Banner Area-->
+<!--Adventures Grid Start-->
+<div class="adventures-grid section-padding list">
+    <div class="container">
+        <div class="row">
+            <div style="text-align: center; width: 60%; margin: auto; padding: 50px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+                <h3>You booking has been requested.</h3>
+                <hr>
+                <p>The travelers must pay 25% upfront out of the total trip cost for the trip conformation.</p>
+                <p>You can pay Via Transfer wise or Bank Transfer: Details are given below</p>
+                <hr>
+                <h4>ACCOUNT HOLDER NAME - Rahul Bairwa<br><br> BANK ACCOUNT NO: 61140866383<br><br> BANK IFSC CODE - SBIN0031846
+                    <br><br> BANK SWIFT CODE- SBININBB851<br><br> BRANCH NAME - Mahesh Nagar, Jaipur<br><br> PHONE NO: +918432178308</h4>
+                <hr>
+                <p>
+                    The trip will be booked once the advance payment is made by the travellers. We will send you the confirmation email through online and assure to provide all the service detail as mentioned in the itinerary.
+
+                </p>
+                <p>
+                    You can pay rest of the amount either by credit card, wire transfer, bank transfer or cash on the first day of trip. (Some payment option subject to charge additional bank service fees up to 4% on top of the sum)
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+<!--End of Adventures Grid-->
+
+{% include 'main/footer.html' %}

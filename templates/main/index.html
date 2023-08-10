@@ -1,0 +1,510 @@
+{% extends 'main/base.html' %} {% block head %}
+<title>Trekking, Hiking, Camping, Safari, Trainings, Explore The Unexplored | UFORangers</title>
+<meta name="description" content="UFORangers is a platform for adventure enthusiasts and seasoned adventurers to explore, plan and take off on their adventure journey. Come, Join and Achieve with UFORangers. ">
+<meta name="keywords" content="Best Treks in India, Best Treks in Nepal, Hiking in Nepal, Camping sites in India, adventure treks, trekking adventure, himalaya tour, adventure tour packages, backpacking tours, adventure holidays, adventure companies, trekking agency"> {% endblock head %} {% load static %} {% block SEO %}
+<!-- SEO Search Queries -->
+<script type="application/ld+json">
+    {
+        "@context": "https://schema.org/",
+        "@type": "WebSite",
+        "name": "UFORangers",
+        "url": "https://uforangers.com/",
+        "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://UFORangers.com/search?q={search_term_string}",
+            "query-input": "required name=search_term_string"
+        }
+    }
+</script>
+{% endblock SEO %} {% block twitterCard %}
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Trekking, Hiking, Camping, Safari, Trainings, Explore The Unexplored | UFORangers">
+<meta name="twitter:description" content="UFORangers is a platform for adventure enthusiasts and seasoned adventurers to explore, plan and take off on their adventure journey. Come, Join and Achieve with UFORangers. ">
+<meta name="twitter:image" content="https://uforangers.com/static/main/img/slider/slider1.webp"> {% endblock twitterCard %} {% block open_graph %}
+<meta property="og:type" content="business.business">
+<meta property="og:title" content="Trekking, Hiking, Camping, Safari, Trainings, Explore The Unexplored | UFORangers">
+<meta property="og:url" content="https://uforangers.com/">
+<meta property="og:image" content="https://uforangers.com/static/main/img/slider/slider1.webp">
+<meta property="og:description" content="UFORangers is a platform for adventure enthusiasts and seasoned adventurers to explore, plan and take off on their adventure journey. Come, Join and Achieve with UFORangers.">
+<meta property="business:contact_data:street_address" content="">
+<meta property="business:contact_data:locality" content="Jaipur">
+<meta property="business:contact_data:region" content="Rajasthan">
+<meta property="business:contact_data:country_name" content="India"> {% endblock open_graph %} {% block index %}
+
+<link rel="stylesheet" href="{% static 'main/css/milestone.css' %}">
+<link rel="stylesheet" href="{% static 'main/css/packages.css' %}">
+<link rel="stylesheet" href="{% static 'main/vendors/themify-icons/themify-icons.css' %}">
+<!--Slider Area Start-->
+<div class="slider-area">
+    <div class="preview-2">
+        <div id="nivoslider" class="slides">
+            <a href="#"><img src="{% static 'main/img/slider/slider8.webp' %}" alt="" title="#slider-1-caption1" /></a>
+            <a href="#"><img src="{% static 'main/img/slider/slider6.webp' %}" alt="" title="#slider-1-caption1" /></a>
+            <a href="#"><img src="{% static 'main/img/slider/slider1.webp' %}" alt="" title="#slider-1-caption1" /></a>
+            <a href="#"><img src="{% static 'main/img/slider/slider5.webp' %}" alt="" title="#slider-1-caption1" /></a>
+        </div>
+        <div id="slider-1-caption1" class="nivo-html-caption nivo-caption">
+            <div class="banner-content slider-1">
+                <div class="container">
+                    <div class="search-box">
+                        <h2 class="first-thing">Come <i class="ti-star"></i> Join <i class="ti-bolt"></i> achieve</h2>
+                        <br>
+                        <h2 class="second-thing"><i>Your adventure starts here...</i></h2>
+                        <form method="GET" action="{% url 'search' %}" class="search-form">
+                            <input type="text" placeholder="find the perfect trip for you..." name="q" id="perfectTrips" oninput="showTrips()">
+                            <button><i class="fa fa-search"></i></button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="perfectTripsResults hide" id="perfectTripsResults">
+        </div>
+    </div>
+</div>
+<!--End of Slider Area-->
+
+<!-- <div style="margin: 20px;">
+    <marquee style="color: red; font-size: 20px;">Our latest packages.</marquee>
+</div> -->
+
+<!--Service Area Start-->
+<div class=" service-area section-padding text-center allStuff">
+    <div class="container">
+        <div class="row ">
+            <div class="col-md-2 col-sm-3 ">
+                <div class="single-service ">
+                    <div class="single-icon ">
+                        <img style="height: 60px;" src="{% static 'main/img/icon/skill-2.png' %} " class="primary-img " alt=" ">
+                        <img src="{% static 'main/img/icon/skill-2-hover.png' %} " class="secondary-img " alt=" ">
+                    </div>
+                    <h5>Trekking</h5>
+                </div>
+            </div>
+            <div class="col-md-2 col-sm-3 ">
+                <div class="single-service ">
+                    <div class="single-icon ">
+                        <img src="{% static 'main/img/icon/3.png' %} " class="primary-img " alt=" ">
+                        <img src="{% static 'main/img/icon/15.png' %} " class="secondary-img " alt=" ">
+                    </div>
+                    <h5>Hiking</h5>
+                </div>
+            </div>
+            <div class="col-md-2 col-sm-3 ">
+                <div class="single-service ">
+                    <div class="single-icon ">
+                        <img src="{% static 'main/img/icon/skill-3.png' %} " class="primary-img " alt=" ">
+                        <img src="{% static 'main/img/icon/14.png' %} " class="secondary-img " alt=" ">
+                    </div>
+                    <h5>Camping</h5>
+                </div>
+            </div>
+            <div class="col-md-2 hidden-sm no-margin ">
+                <div class="single-service ">
+                    <div class="single-icon ">
+                        <img src="{% static 'main/img/icon/6.png' %} " class="primary-img " alt=" ">
+                        <img src="{% static 'main/img/icon/12-hover.png' %} " class="secondary-img " alt=" ">
+                    </div>
+                    <h5>Safari</h5>
+                </div>
+            </div>
+            <div class="col-md-2 hidden-sm no-margin ">
+                <div class="single-service ">
+                    <div class="single-icon ">
+                        <img src="{% static 'main/img/icon/about-1.png' %} " class="primary-img " alt=" ">
+                        <img src="{% static 'main/img/icon/about-1-hover.png' %} " class="secondary-img " alt=" ">
+                    </div>
+                    <h5>Training</h5>
+                </div>
+            </div>
+            <div class="col-md-2 hidden-sm no-margin ">
+                <div class="single-service ">
+                    <div class="single-icon ">
+                        <img src="{% static 'main/img/icon/about-2.png' %} " class="primary-img " alt=" ">
+                        <img src="{% static 'main/img/icon/about-2-hover.png' %} " class="secondary-img " alt=" ">
+                    </div>
+                    <h5>Explore</h5>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!--End of Service Area-->
+<!--About Area Start-->
+<div class="about-area text-center hidden-xs ">
+    <div class="container ">
+        <div class="row ">
+            <div class="col-md-6 col-md-offset-6 col-sm-10 col-sm-offset-2 ">
+                <div class="about-container section-padding ">
+                    <div class="section-title ">
+                        <div class="title-border ">
+                            <h1>About <span>Uforangers</span></h1>
+                        </div>
+                    </div>
+                    <div class="about-text ">
+                        <h1>YOUR DREAMS. OUR IKIGAI </h1>
+                        <p>Exploring with UFORangers is the ultimate way to achieve your dreams, and for us it is our 'Ikigai' (Reason for being) to help you do just that! For over 20 years we've brought adventurous souls together from all over the globe
+                            to help guide them on the expeditions of their dreams, along with making life-long connections. This is our main goal here at UFORangers, giving you the opportunity to embark on a journey of self-discovery, face your fears,
+                            and go beyond your own expectations.
+                        </p>
+                        <a href="{% url 'about' %} ">Why Travel with UFORangers?</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--End of About Area-->
+<!--Portfolio Area Start-->
+<div class="portfolio-area ">
+    <div class="container ">
+        <div class="row ">
+            <div class="col-md-12 ">
+                <div class="section-title text-center ">
+                    <div class="title-border ">
+                        <h1>Featured<span> Treks & Expeditions</span></h1>
+                    </div>
+                    <p>Every adventure lover wants to face their fear and push beyond their own boundaries, but not everybody can do it the same way, that's why we have a large variety of adventures to choose from. Here at UFORangers, we do all of the hard
+                        work to organise your trip of a life-time, so you can spend less time planning and more time dreaming about your upcoming adventure.
+
+                    </p>
+                </div>
+            </div>
+        </div>
+        {% if packages %}
+        <div class="row allpackages">
+            {% for package in packages %}
+            <div class="col-md-6 col-sm-6 ">
+                <div class="single-portfolio">
+                    {% if package.booking_option %}
+                    <div class="pacakge-cost" style="margin-bottom: 20px; padding: 10px;">
+                        <small>
+                            <a style=" color: rgba(255, 255, 255, 0.75); " href="{% url 'on_request_booking' package.country.slug package.region.slug package.slug %} ">
+                                On Request Booking.
+                            </a>
+                        </small>
+                    </div>
+                    {% else %}
+                    <div class="pacakge-cost ">
+                        <small><i>from </i><del>{{package.currency}} {{package.original_cost}}</del></small>
+                        <p>{{package.currency}} <strong>{{package.group_cost}}</strong><small><sup>pp</sup></small>
+                        </p>
+                        <small>{{package.get_gst_option_display}}</small>
+                    </div>
+                    {% endif %} {% if package.category.id == 1 %}
+                    <div class="package-tags " style="background-color: rgba(0,182,0,0.8); ">
+                        <i class="fa fa-star "></i> <strong>{{package.category}}</strong>
+                    </div>
+                    {% elif package.category.id == 2 %}
+                    <div class="package-tags " style="background-color: rgba(250,100,0,0.8); ">
+                        <i class="fa fa-group "></i> {{package.category}}
+                    </div>
+                    {% else %}
+                    <div class="package-tags " style="background-color: rgba(171,24,47,0.8); ">
+                        <i class="fa fa-lock "></i> {{package.category}}
+                    </div>
+                    {% endif %}
+                    <a href="{% url 'package_detail' package.country.slug package.region.slug package.slug %} ">
+                        <img class="package-image " src="/media/{{package.package_image}} " alt="{{ package.name }} in {{ package.country }}">
+                    </a>
+                    <div class="package-bottom ">
+                        <div class="package-name ">
+                            <a href="{% url 'package_detail' package.country.slug package.region.slug package.slug %} ">
+                                <i class="fa fa-map-marker "></i> {{package.name}} - {{package.duration}} days.
+                            </a>
+                        </div>
+                        <div class="row package-detail ">
+                            <div class="col-md-4 col-sm-4 ">
+                                <div class="row ">
+                                    <div class="col-md-4 ">
+                                        <img class="package-activity-image " src="{% static 'main/img/icon/svgs/solid/hiking.svg' %} ">
+                                    </div>
+                                    <div class="col-md-8 ">
+                                        <small>Activity</small>
+                                        <p class="activity-scroll ">{% for activity in package.activity.all %} <small>{{activity}},</small> {% endfor %}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-4 ">
+                                <div class="row ">
+                                    <div class="col-md-4 ">
+                                        <img class="package-activity-image " src="{% static 'main/img/icon/svgs/solid/clock.svg' %} ">
+                                    </div>
+                                    <div class="col-md-8 ">
+                                        <small>Duration</small>
+                                        <p>{{package.duration}} days</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-4 ">
+                                <div class="row ">
+                                    <div class="col-md-4 ">
+                                        <img class="package-activity-image " src="{% static 'main/img/icon/svgs/solid/tachometer-alt.svg' %} ">
+                                    </div>
+                                    <div class="col-md-8 ">
+                                        <small>Grade</small>
+                                        <p>{{package.get_difficulty_display}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <div style="text-align: center; ">
+            <a href="{% url 'packages' %} " class="button-one ">Explore all packages</a>
+        </div>
+        {% else %}
+        <p>No package has been added yet</p>
+        {% endif %}
+    </div>
+</div>
+<!--End of Portfolio Area-->
+<!--Fun Factor Area Start-->
+<div class="fun-factor-area text-center hidden-xs hide ">
+    <div class="container ">
+        <div class="row ">
+            <div class="col-md-12 ">
+                <div class="section-title ">
+                    <div class="title-border ">
+                        <h1 class="text-white ">SOME <span>FUN INFO</span></h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row ">
+            <div class="col-md-2 col-sm-3 ">
+                <div class="single-fun-wrapper ">
+                    <div class="single-fun-factor ">
+                        <div class="fun-border-left "></div>
+                        <img src="{% static 'main/img/icon/7.png' %} " alt=" ">
+                        <h4><span class="counter ">5670</span> M</h4>
+                        <h5>Cyliing Track</h5>
+                        <div class="fun-border-right "></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2 col-sm-3 ">
+                <div class="single-fun-wrapper ">
+                    <div class="single-fun-factor ">
+                        <div class="fun-border-left "></div>
+                        <img src="{% static 'main/img/icon/8.png' %} " alt=" ">
+                        <h4><span class="counter ">480</span> M</h4>
+                        <h5>Distance Coverd</h5>
+                        <div class="fun-border-right "></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2 col-sm-3 ">
+                <div class="single-fun-wrapper ">
+                    <div class="single-fun-factor ">
+                        <div class="fun-border-left "></div>
+                        <img src="{% static 'main/img/icon/9.png' %} " alt=" ">
+                        <h4><span class="counter ">5670</span> M</h4>
+                        <h5>Altitude Hiked</h5>
+                        <div class="fun-border-right "></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2 col-sm-3 ">
+                <div class="single-fun-wrapper ">
+                    <div class="single-fun-factor ">
+                        <div class="fun-border-left "></div>
+                        <img src="{% static 'main/img/icon/10.png' %} " alt=" ">
+                        <h4><span class="counter ">180</span> KM</h4>
+                        <h5>Sailing Distance</h5>
+                        <div class="fun-border-right "></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2 hidden-sm ">
+                <div class="single-fun-wrapper ">
+                    <div class="single-fun-factor ">
+                        <div class="fun-border-left "></div>
+                        <img src="{% static 'main/img/icon/11.png' %} " alt=" ">
+                        <h4><span class="counter ">570</span> Days</h4>
+                        <h5>Spent Adventure</h5>
+                        <div class="fun-border-right "></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2 hidden-sm ">
+                <div class="single-fun-wrapper ">
+                    <div class="single-fun-factor ">
+                        <div class="fun-border-left "></div>
+                        <img src="{% static 'main/img/icon/12.png' %} " alt=" ">
+                        <h4><span class="counter ">567</span> M</h4>
+                        <h5>Jugle Distance</h5>
+                        <div class="fun-border-right "></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--End of Fun Factor Area-->
+<!--Best Sell Area Start-->
+<div class="best-sell-area section-padding ">
+    <div class="container ">
+        <div class="row ">
+            <div class="col-md-12 ">
+                <div class="section-title text-center ">
+                    <div class="title-border ">
+                        <h1>Browse <span>BY ADVENTURE</span></h1>
+                    </div>
+                    <p>Not sure what you’re looking for and need a little inspiration? We can help. Check out our handpicked list trips you can take right now. </p>
+                </div>
+            </div>
+        </div>
+        <div class="row ">
+            <div class="col-md-6 ">
+                <div class="sell-text-container ">
+                    <p><i>This one may sound a bit cliche, but a lot of people don’t figure this out until it’s too
+                            late. Every mountain, every journey, every action that takes us outside of our comfort zone
+                            is a scary adventure.
+                            But the adventure itself is not the frightening part. The scary part is inside us. That
+                            inner voice inside that demands that you stick to what you know and stay put. When you
+                            conquer that inner voice, you’ve conquered the mountain.</i></p>
+                    <a href="# " class="button-one ">VIew adventure</a>
+                </div>
+                <div class="row ">
+                    <div class="best-sell-slider carousel-style-one ">
+                        {% if continents %} {% for continent in continents %}
+                        <div class="col-md-3 ">
+                            <div class="hover-effect ">
+                                <div class="box-hover ">
+                                    <a href="{% url 'continent' continent.slug %} ">
+                                        <img style="width: 100%; " src="/media/{{continent.image}} " alt=" ">
+                                        <span>{{continent.continent}}</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %} {% else %}
+                        <p>No continent has been added yet.</p> {% endif %}
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 hidden-sm ">
+                <img src="{% static 'main/img/banner/adventure.webp' %} " alt=" ">
+            </div>
+        </div>
+    </div>
+</div>
+<!--End of Best Sell Area-->
+
+<!--Blog Area Start-->
+<div class="blog-area section-padding ">
+    <div class="container ">
+        <div class="row ">
+            <div class="col-md-12 ">
+                <div class="section-title text-center ">
+                    <div class="title-border ">
+                        <h1>OUR <span>Blogs</span></h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row ">
+            <div class="blog-carousel ">
+                {% if blogs %} {% for blog in blogs %}
+                <div class="col-md-6 ">
+                    <div class="single-blog hover-effect ">
+                        <div class="row ">
+                            <div class="col-md-6 col-sm-6 ">
+                                <div class="blog-image box-hover ">
+                                    <a href="{% url 'blog_detail' blog.slug %} "><img src="/media/{{blog.blog_image}} " alt=" "></a>
+                                    <div class="date-time ">
+                                        <span class="date ">{{blog.createdAt|date:"d "}}</span>
+                                        <span class="month ">{{blog.createdAt|date:"M "}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-6 margin-left ">
+                                <div class="blog-text ">
+                                    <h4><a href="{% url 'blog_detail' blog.slug %} ">{{blog.title}}</a></h4>
+                                    <p><i class="fa fa-user "></i> {{blog.author}}</p>
+                                    <a href="{% url 'blog_detail' blog.slug %} " class="button-one ">Read More...</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %} {% else %}
+                <div class="col-md-6 ">
+                    <div class="single-blog hover-effect ">
+                        <div class="row ">
+                            No blog has been added yet.
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+<!--End of Blog Area-->
+
+
+<div class="blog-area section-padding ">
+    <div class="container ">
+        <div class="row ">
+            <div class="col-md-12 ">
+                <div class="section-title text-center ">
+                    <div class="title-border ">
+                        <h1><span>Milestones</span></h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="timeline">
+
+            <div class="timelineA timelineA-left">
+                <div class="image">
+                    <img src="{% static 'main/img/milestone/4.jpg' %}">
+                </div>
+                <div class="content">
+                    <span style="font-size: 24px;">2020 - Present</span>
+                    <hr>
+                    <h4 style="font-size: 20px;">UFORangers establishes as an organisation and is on a mission to create joy for millions of people through adventure..</h4>
+
+                </div>
+            </div>
+            <div class="timelineA timelineA-right">
+                <div class="image">
+                    <img src="{% static 'main/img/milestone/3.jpg' %}">
+                </div>
+                <div class="content">
+                    <span style="font-size: 24px;">2018 - Present</span>
+                    <hr>
+                    <h4 style="font-size: 20px;">UFORangers team organises Everest Base Camp Trek more than 10 times successfully.</h4>
+                </div>
+            </div>
+            <div class="timelineA timelineA-left">
+                <div class="image">
+                    <img src="{% static 'main/img/milestone/2.jpg' %}">
+                </div>
+                <div class="content">
+                    <span style="font-size: 24px;">2019</span>
+                    <hr>
+                    <h4 style="font-size: 20px;">UFORangers team successfully reaches Africa’s highest peak twice - Mt. Kilimanjaro (5985 m) in Tanzania.</h4>
+                </div>
+            </div>
+            <div class="timelineA timelineA-right">
+                <div class="image">
+                    <img src="{% static 'main/img/milestone/1.jpg' %}">
+                </div>
+                <div class="content">
+                    <span style="font-size: 24px;">2019</span>
+                    <hr>
+                    <h4 style="font-size: 20px;">UFORangers team summits Europe&#39;s highest mountain peak - Mt. Elbrus (5642 m) in Russia.</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock index %}

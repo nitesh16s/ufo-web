@@ -1,0 +1,52 @@
+{% extends 'packages/base.html' %} {% load static %} {% block payment %}
+<style>
+    .django-ckeditor-widget {
+        width: 100%;
+    }
+</style>
+
+<!--Banner Area Start-->
+<div class="banner-area list">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section-title title-three text-center">
+                    <div class="title-border">
+                        <h1>Adventure <span>Listing</span></h1>
+                    </div>
+                    <p class="text-white">List View Adventure Listing</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <ul class="breadcrumb three">
+                    <li><a href="{% url 'index' %}">Home</a></li>
+                    <li>Write blogs</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!--End of Banner Area-->
+<!--Adventures Grid Start-->
+<div class="adventures-grid section-padding list">
+    <div class="container">
+        <div class="row">
+            <div class="leave-comment">
+                <form method="POST" action="{% url 'confirm_payment' %}">
+                    {% csrf_token %} {% for message in messages %} {{message}}<br> {% endfor %}
+                    <input type="hidden" name="package_id" value="{{booking.package.id}}">
+                    <input type="hidden" name="schedule_id" value="{{booking.schedule.id}}">
+                    <input type="hidden" name="seat_count" value="{{booking.seat_count}}">
+                    <script src="https://checkout.razorpay.com/v1/checkout.js" data-key="rzp_test_SRqvDE4o0fKB3W" data-amount="{{ amount }}" data-currency="INR" data-name="UFORangers" data-description="Confirm Payment" data-image="{% static 'main/img/favicon.png' %}" data-netbanking="true"
+                        data-description="Tron Legacy" data-prefill.name="{{ request.user.first_name }} {{ request.user.last_name }}" data-prefill.email="{{ request.user.email }}" data-prefill.contact="{{ request.user.profile.mobile }}" data-notes.order_id="{{ order_id }}">
+                    </script>
+                    <input type="hidden" name="order_id" value="{{ order_id }}">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!--End of Adventures Grid-->
+{% endblock payment %}

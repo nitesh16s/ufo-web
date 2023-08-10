@@ -1,0 +1,283 @@
+{% load static %}
+<!Doctype html>
+<html class="no-js" lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>UFORangers || Adventure Management Consultant</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XQ4TQGF4WD"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'G-XQ4TQGF4WD');
+    </script>
+
+    <!-- favicon
+		============================================ -->
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'main/img/logo.png' %}">
+
+    <!-- Google Fonts
+		============================================ -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Raleway:400,300,500,600,700,800' rel='stylesheet' type='text/css'>
+
+    <!-- Bootstrap CSS
+		============================================ -->
+    <link rel="stylesheet" href="{% static 'main/css/bootstrap.min.css' %}">
+
+    <!-- Fontawsome CSS
+		============================================ -->
+    <link rel="stylesheet" href="{% static 'main/css/font-awesome.min.css' %}">
+
+    <!-- owl.carousel CSS
+		============================================ -->
+    <link rel="stylesheet" href="{% static 'main/css/owl.carousel.css' %}">
+
+    <!-- jquery-ui CSS
+		============================================ -->
+    <link rel="stylesheet" href="{% static 'main/css/jquery-ui.css' %}">
+
+    <!-- meanmenu CSS
+		============================================ -->
+    <link rel="stylesheet" href="{% static 'main/css/meanmenu.min.css' %}">
+
+    <!-- animate CSS
+		============================================ -->
+    <link rel="stylesheet" href="{% static 'main/css/animate.css' %}">
+
+    <!-- nivo slider CSS
+		============================================ -->
+    <link rel="stylesheet" href="{% static 'main/nivo/nivo-slider/css/nivo-slider.css' %}" type="text/css" />
+    <link rel="stylesheet" href="{% static 'main/nivo/nivo-slider/css/preview.css' %}" type="text/css" media="screen" />
+
+    <!-- style CSS
+		============================================ -->
+    <link rel="stylesheet" href="{% static 'main/css/style.css' %}">
+
+    <!-- Nav CSS -->
+    <link rel="stylesheet" href="{% static 'main/css/nav.css' %}">
+
+    <!-- responsive CSS
+		============================================ -->
+    <link rel="stylesheet" href="{% static 'main/css/responsive.css' %}">
+
+    <!-- modernizr JS
+		============================================ -->
+    <script src="{% static 'main/js/vendor/modernizr-2.8.3.min.js' %}"></script>
+
+    <style>
+        @media (min-width: 992px) {
+            .dropdown-menu .dropdown-toggle:after {
+                border-top: .3em solid transparent;
+                border-right: 0;
+                border-bottom: .3em solid transparent;
+                border-left: .3em solid;
+            }
+            .dropdown-menu .dropdown-menu {
+                margin-left: 0;
+                margin-right: 0;
+            }
+            .dropdown-menu li {
+                position: relative;
+            }
+            .nav-item .submenu {
+                display: none;
+                position: absolute;
+                left: 100%;
+                top: -7px;
+            }
+            .nav-item .submenu-left {
+                right: 100%;
+                left: auto;
+            }
+            .dropdown-menu>li:hover {
+                display: block;
+                background-color: #f1f1f1
+            }
+            .dropdown-menu>li:hover>.submenu {
+                display: block;
+            }
+        }
+        
+        #nav>.dropdown:hover>ul {
+            display: block;
+            position: absolute;
+        }
+    </style>
+</head>
+
+<body>
+    <!--Header Area Start-->
+    <header class="header-three">
+        <div class="header-top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 col-sm-12">
+                        <div class="logo">
+                            <a style="color: #1b2b3a; font-weight: 700; font-size: 20px; letter-spacing: 2px;" href="{% url 'index' %}"><img src="{% static 'main/img/icon/mountain-dark.png' %}" alt="UFORangers"> UFORangers
+                            </a><br>
+                            <p style="font-size: 12px; color: #1b2b3a; letter-spacing: 1px;">Adventure Management Consultant
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 info">
+                        <p>Quick Questions? Email Us<br>info@uforangers.com</p>
+                    </div>
+                    <div class="col-md-4 info">
+                        <img class="expert-img" src="/media/avatar.png">
+                        <p>Talk to an Expert(Rahul)<br><i class="fa fa-whatsapp"> +91 8432178308</i></p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!--Logo Mainmenu Start-->
+        <div class="header-logo-menu">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                        <div class="logo-menu-bg">
+                            <div class="row">
+                                <div class="col-md-12 hidden-sm hidden-xs">
+                                    <div class="mainmenu">
+                                        <nav>
+                                            <ul id="nav">
+                                                <li class="nav-item dropdown">
+                                                    <a class=" dropdown-toggle" href="/packages/" onmouseover="showCountries()">Packages</a>
+                                                    <ul class="dropdown-menu sub-menu" id="countries">
+                                                        <li id="countries">
+                                                            <a class="dropdown-item" href="#">Fetching Countries</a>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                                <li class="drop-down"><a href="#" onmouseover="showActivities()">Activities</a>
+                                                    <ul class="sub-menu">
+                                                        <li id="activities">
+                                                            Fetching Activities
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                                <li class="drop-down"><a href="{% url 'fitness_programs' %}" onmouseover="showPrograms()">Training Programs</a>
+                                                    <ul class="sub-menu">
+                                                        <li id="training_programs">
+                                                            <a>Fetching Packages</a>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                                <li class="drop-down"><a href="{% url 'less_explored_packages' %}" onmouseover="showLessExplored()">Less Explored</a>
+                                                    <ul class="sub-menu">
+                                                        <li id="less_explored">
+                                                            <a>Fetching Packages</a>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                                <li class="drop-down"><a href="{% url 'blogs' %}">BLOG</a>
+                                                </li>
+                                                <li><a href="{% url 'contact' %}">Contact Us</a></li>
+                                            </ul>
+                                        </nav>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6 col-xs-12 profile-right">
+                        {% if request.user.is_authenticated %}
+                        <a href="{% url 'account_logout' %}">
+                            <p> Logout</p>
+                        </a>
+                        <a href="{% url 'profile' %}">
+                            <p>Hi, {{request.user.username}} || </p>
+                        </a>
+                        <!-- <a href="{% url 'profile' %}"><img src="{{request.user.profile.profile_picture.url}}"></a> -->
+                        {% else %}
+                        <a href="{% url 'account_signup' %}">
+                            <p>Register</p>
+                        </a>
+                        <a href="{% url 'account_login' %}">
+                            <p>Login</p>
+                        </a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--End of Logo Mainmenu-->
+        <!-- Mobile Menu Area start -->
+        <div class="mobile-menu-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12">
+                        <div class="mobile-menu">
+                            <nav id="dropdown">
+                                <ul>
+                                    <li><a href="#">Enquiry</a>
+                                        <ul>
+                                            <li>
+                                                <a>Quick Questions? Email Us <b>info@uforangers.com</b></a>
+                                                <a>
+                                                    Talk to an Expert(Rahul) <i class="fa fa-whatsapp"> +91
+                                                        8432178308</i>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li><a onclick="showCountries()" href="#">Packages</a>
+                                        <ul id="countriesM">
+                                            <li>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li><a onclick="showActivities()" href="#">Activities</a>
+                                        <ul id="activitiesM">
+                                            <li>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li><a onclick="showPrograms()" href="#">Training Programs</a>
+                                        <ul id="training_programsM">
+                                            <li>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li><a onclick="showLessExplored()" href="#">Less Explored</a>
+                                        <ul id="less_exploredM">
+                                            <li>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="{% url 'blogs' %}">Blogs</a>
+                                    </li>
+                                    <li><a href="{% url 'contact' %}">Contact Us</a></li>
+                                    {% if request.user.is_authenticated %}
+                                    <li>
+                                        <a href="{% url 'profile' %}"><img style="height: 40px; width: 40px; border-radius: 50%;" src="{{request.user.profile.profile_picture.url}}"> Hi, {{request.user}}
+                                        </a>
+                                        <a href="{% url 'account_logout' %}">Logout</a>
+                                    </li>
+                                    {% else %}
+                                    <li><a href="{% url 'account_login' %}">Login</a></li>
+                                    <li><a href="{% url 'account_signup' %}">Register</a></li>
+                                    {% endif %}
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu Area end -->
+        {% include 'main/messages.html' %}
+    </header>
+    <!--End of Header Area-->
+</body>

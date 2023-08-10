@@ -1,0 +1,79 @@
+{% extends 'fitness/base.html' %} {% block head %}
+<title>Training Programs</title>
+<meta name="description" content="">
+<meta name="keywords" content="Fitness, Training, Wellness, Goal Based Training"> {% endblock head %} {% block FitnessProgramBreadCrumb %}
+<script type="application/ld+json">
+    {
+        "@context": "http://schema.org/",
+        "@type": "BreadcrumbList",
+        "itemListElement": [{
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home ",
+            "item": "https://uforangers.com/"
+        }, {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Training Programs",
+            "item": "https://uforangers.com/training-programs"
+        }]
+    }
+</script>
+{% endblock FitnessProgramBreadCrumb %} {% load static %} {% block programs %}
+
+<style>
+    .banner-area {
+        padding-bottom: 0;
+        padding-top: 392px;
+        position: relative;
+        background: rgba(0, 0, 0, 0) url("{% static 'main/img/banner/full.jpg' %}") no-repeat scroll center top / cover;
+    }
+</style>
+<link rel="stylesheet" href="{% static 'main/css/programs.css' %}">
+<!--Banner Area Start-->
+<div class="banner-area grid">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section-title text-center">
+                    <div class="title-border">
+                        <h1><span>Training Programs</span></h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <ul class="breadcrumb">
+                    <li><a href="{% url 'index' %}">Home</a></li>
+                    <li>Training Programs</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!--End of Banner Area-->
+<!--Adventures Grid Start-->
+<div class="adventures-grid section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="clearfix"></div>
+            <div class="row programs">
+                {% for program in programs %}
+                <div class="col-md-6 col-sm-6 ">
+                    <div class="single-portfolio">
+                        <a href="{% url 'fitness_program_detail' program.slug %}"><img src="/media/{{program.program_image}} " alt="{{ program.name }} from experts for {{ program.cost }} rupees per month"></a>
+                        <div class="program-bottom ">
+                            <div class="program-name ">
+                                <a href="{% url 'fitness_program_detail' program.slug %}">{{program.name}}.
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock programs %}

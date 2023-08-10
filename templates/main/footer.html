@@ -1,0 +1,155 @@
+{% load static %}
+
+<!--Partner Area Start-->
+<div class="partner-area section-bottom-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section-title text-center">
+                    <div class="title-border">
+                        <h1>Our <span>Partners</span></h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="" style="display: flex;" id="sponsers">
+            </div>
+        </div>
+    </div>
+</div>
+<!--End of Partner Area-->
+
+<!--Footer Widget Area Start-->
+<div class="footer-widget-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-3 col-sm-4">
+                <div class="single-footer-widget contact-text-info">
+                    <h4>Contact Us</h4>
+                    <div class="footer-widget-list">
+                        <ul>
+                            <li class="icon send">B-338, Mahesh Nagar, Jaipur</li>
+                            <li class="icon envelope">info@uforangers.com</li>
+                            <li class="icon phone">+91 8432178308</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-4">
+                <div class="single-footer-widget">
+                    <h4>Less Explored</h4>
+                    <div class="footer-widget-list">
+                        <ul class="widget-lists" id="less_exploredF">
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-4">
+                <div class="single-footer-widget">
+                    <h4>Training Programs</h4>
+                    <div class="footer-widget-list">
+                        <ul class="widget-lists" id="training_programsF">
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-4">
+                <div class="single-footer-widget">
+                    <h4>Activities</h4>
+                    <div class="footer-widget-list">
+                        <ul class="widget-lists" id="activitiesF">
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 col-sm-6">
+                <div class="footer-link">
+                    <a target="_blank" href="https://www.facebook.com/UFORangers-107395671228558/"><i class="fa fa-facebook"></i></a>
+                    <a href="#"><i class="fa fa-twitter"></i></a>
+                    <a target="_blank" href="https://www.instagram.com/uforangers/"><i class="fa fa-instagram"></i></a>
+                    <a href="#"><i class="fa fa-linkedin"></i></a>
+                </div>
+            </div>
+            <hr>
+            <div class="col-md-6 col-sm-6">
+                <h3 class="text-white">Want to work with us.</h3>
+                <form action="{% url 'work_with_us' %}" method="POST" id="newsletter">
+                    {% csrf_token %}
+                    <div class="newsletter-content">
+                        <div class="row">
+                            <div class="col-lg-9 col-md-8 col-sm-9 col-xs-12">
+                                <input type="email" name="email" placeholder="Enter your email address...">
+                            </div>
+                            <div class=" col-lg-3 col-md-4 col-sm-3 col-xs-12 ">
+                                <button type="submit" class="button"><span>Join</span></button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!--End of Footer Widget Area-->
+
+
+<!-- jquery
+		============================================ -->
+<script src="{% static 'main/js/vendor/jquery-1.12.3.min.js' %}"></script>
+
+<!-- bootstrap JS
+		============================================ -->
+<script src="{% static 'main/js/bootstrap.min.js' %}"></script>
+
+<!-- nivo slider js
+		============================================ -->
+<script src="{% static 'main/nivo/nivo-slider/js/jquery.nivo.slider.js' %}" type="text/javascript"></script>
+<script src="{% static 'main/nivo/nivo-slider/home.js' %}" type="text/javascript"></script>
+
+<!-- wow JS
+		============================================ -->
+<script src="{% static 'main/js/wow.min.js' %}"></script>
+
+<!-- meanmenu JS
+		============================================ -->
+<script src="{% static 'main/js/jquery.meanmenu.js' %}"></script>
+
+<!-- owl.carousel JS
+		============================================ -->
+<script src="{% static 'main/js/owl.carousel.min.js' %}"></script>
+
+<!-- price-slider JS
+		============================================ -->
+<script src="{% static 'main/js/jquery-price-slider.js' %}"></script>
+
+<!-- scrollUp JS
+		============================================ -->
+<script src="{% static 'main/js/jquery.scrollUp.min.js' %}"></script>
+
+<!-- Waypoints JS
+		============================================ -->
+<script src="{% static 'main/js/waypoints.min.js' %}"></script>
+
+<!-- Counter Up JS
+		============================================ -->
+<script src="{% static 'main/js/jquery.counterup.min.js' %}"></script>
+
+<!-- plugins JS
+		============================================ -->
+<script src="{% static 'main/js/plugins.js' %}"></script>
+
+<!-- main JS
+		============================================ -->
+<script src="{% static 'main/js/main.js' %}"></script>
+
+<!-- My JS
+		============================================ -->
+<script src="{% static 'main/js/my.js' %}"></script>
+
+
+</body>
+
+</html>

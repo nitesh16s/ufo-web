@@ -1,0 +1,162 @@
+{% extends 'blogs/base.html' %} {% block head %}
+<title>{{ blog.title_tag }}</title>
+<meta name="description" content="{{ blog.description }} ">
+<meta name="keywords" content="{{ blog.keywords }}"> {% endblock head %} {% block blogSEO %}
+<script type="application/ld+json">
+    {
+        "@context": "http://schema.org/",
+        "@type": "BlogPosting",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://uforangers.com/blog/{{blog.slug}}/"
+        },
+        "author": {
+            "@type": "Person",
+            "name": "{{blog.author}}"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "UFORangers",
+            "logo": {
+                "@type": "ImageObject",
+                "url": ""
+            }
+        },
+        "headline": "{{blog.title}}",
+        "image": "https://uforangers.com/media/{{blog.blog_image}}",
+        "datePublished": "{{blog.createdAt}}"
+    }
+</script>
+{% endblock blogSEO %} {% block blog_open_graph %} {{blog.seo|safe}} {% endblock blog_open_graph %} {% block blog_detail %}
+<!--Banner Area Start-->
+<div class="banner-area blog-one">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section-title text-center">
+                    <div class="title-border">
+                        <h1>Adventure <span>Blog</span></h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <ul class="breadcrumb">
+                    <li><a href="{% url 'index' %}">Home</a></li>
+                    <li>Blog</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!--End of Banner Area-->
+<!--Blog Post Area Start-->
+<div class="blog-post-area section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="sidebar-widget">
+                    <div class="single-sidebar-widget">
+                        <h4>Search <span>Blog</span></h4>
+                        <form id="text-search" action="#">
+                            <input type="text" placeholder="Search Here .....">
+                            <button class="submit"><i class="fa fa-search"></i></button>
+                        </form>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="single-sidebar-widget country-select">
+                        <h4>Select <span>Categories</span></h4>
+                        <ul class="widget-categories">
+                            {% for activity in activities %}
+                            <li><a href="{% url 'blog_category' activity.slug %}">{{activity.activity}}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    {% if request.user.is_authenticated %}
+                    <div class="xxx">
+                        <div style="height: 50px;">
+                            {% if followed %}
+                            <a style="font-size: 16px;" id="follow" onclick="follow({{blog.author.id}})">Unfollow</a> {% else %}
+                            <a style="font-size: 16px;" id="follow" onclick="follow({{blog.author.id}})">Follow</a> {% endif %}
+                        </div>
+                        <div style="height: 50px;">
+                            <a style="font-size: 20px;"><i class="fa fa-comment-o"></i> {{comments|length}}</a>
+                        </div>
+                        <div style="height: 50px;">
+                            {% if liked %}
+                            <a style="font-size: 20px;" title="Dislike Blog" id="likeBlog" onclick="likeBlog({{blog.id}})">
+                                <i class="fa fa-heart"></i> {{total_likes}}
+                            </a>
+                            {% else %}
+                            <a style="font-size: 20px;" title="Like Blog" id="likeBlog" onclick="likeBlog({{blog.id}})">
+                                <i class="fa fa-heart-o"></i> {{total_likes}}
+                            </a>
+                            {% endif %}
+                        </div>
+                        <div style="height:50px;">
+                            {% if saved %}
+                            <a style="font-size: 20px;" title=" Unsave Blog" id="saveBlog" onclick="saveBlog({{blog.id}})"><i class="fa fa-bookmark"></i> Saved</a> {% else %}
+                            <a style="font-size: 20px;" title="Save Blog" id="saveBlog" onclick="saveBlog({{blog.id}})"><i
+                                        class="fa fa-bookmark-o"></i> Save</a> {% endif %}
+                        </div>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="col-md-9">
+                <div class="single-blog-post blog-post-details">
+                    <div class="single-blog-post-img">
+                        <img style="width: 100%" src="/media/{{blog.blog_image}}" alt="{{ blog.title }}">
+                        <div class="date-time">
+                            <span class="date">{{blog.createdAt|date:"d"}}</span>
+                            <span class="month">{{blog.createdAt|date:"M"}}</span>
+                        </div>
+                    </div>
+                    <div class="single-blog-post-text">
+                        <h4>{{blog.title}}</h4>
+                        <div class="author-comments">
+                            <span><i class="fa fa-user"></i>{{blog.author}}
+                    </span>
+                        </div>
+                        <p>{{blog.content|safe}}</p>
+                    </div>
+                </div>
+                <div class="blog-comments">
+                    <h4 class="blog-title">User <span>Comments ({{comments|length}})</span></h4>
+                    {% for comment in comments %}
+                    <div class="single-comment">
+                        <div class="author-image">
+                            <img style="height: 70px; width: 70px; border-radius: 50%;" src="{{comment.author.profile.profile_picture.url}}" alt="">
+                        </div>
+                        <div class="comment-text">
+                            <div class="author-info">
+                                <h4><a href="#">{{comment.author}}</a> | <a href="{% url 'update_comment' comment.slug %}"><i title="Edit Comment" class="fa fa-pencil"></i></a></h4>
+                                <span class="reply">
+                                    <a onclick="showReplies({{comment.id}})"><i class="fa fa-reply"></i>Show Replies</a>
+                                </span>
+                                <span class="comment-time">{{comment.createdAt}}</span>
+                            </div>
+                            {{comment.content|safe}}
+                        </div>
+                    </div>
+                    <div id="{{comment.id}}replyDiv" class="single-comment comment-reply hide">
+                        Fetching Replies...
+                    </div>
+                    {% endfor %}
+                </div>
+
+                <!-- <h4 id="show_comments" class="blog-title" onclick="showComments({{blog.id}})">Show <span>Comments ({{comments|length}})</span></h4>
+                <div class="blog-comments" id="user_comments">
+                </div>
+                <hr> -->
+                <div class="leave-comment">
+                    <h4 class="blog-title">Leave A <span>Comment</span></h4>
+                    {% include 'blogs/comment_form.html' %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--End of Blog Post Area -->
+{% endblock blog_detail %}

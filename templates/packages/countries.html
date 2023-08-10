@@ -1,0 +1,85 @@
+{% extends 'packages/base.html' %} {% block head %}
+<title>{{continent}} Treks and Adventures </title>
+<meta name="description" content="UFORangers is a platform for adventure enthusiasts and seasoned adventurers to explore, plan and take off on their adventure journey. Come, Join and Achieve with UFORangers.">
+<meta name="keywords" content="Trekking, Hiking, Camping, Safari, Trainings, Expedition, Adventure, Explore, Unexplored"> {% endblock head %} {% block countries %} {% load static %}
+<style>
+    .banner-area.list {
+        background: rgba(0, 0, 0, 0) url("/media/{{continent.cover}}") no-repeat scroll center top / cover;
+        padding-bottom: 149px;
+        padding-top: 244px;
+    }
+</style>
+<!--Banner Area Start-->
+<div class="banner-area list">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section-title title-three text-center">
+                    <div class="title-border">
+                        <h1><span>{{continent}}</span></h1>
+                    </div>
+                    <p class="text-white">{{continent.about|safe}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <ul class="breadcrumb three">
+                    <li><a href="{% url 'index' %}">Home</a></li>
+                    <li><a href="{% url 'continent' continent.slug %}">{{continent.continent}}</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!--End of Banner Area-->
+<!--Adventures Grid Start-->
+<div class="adventures-grid section-padding list">
+    <div class="container">
+        <div class="clearfix"></div>
+        <div class="row">
+            {% for country in countries %}
+            <div class="col-md-12">
+                <div class="single-list-item">
+                    <div class="row">
+                        <div class="col-md-4 col-sm-5">
+                            <div class="adventure-img">
+                                <a href="{% url 'country_packages' country.slug %}"><img src="/media/{{country.image}}" alt=""></a>
+                            </div>
+                        </div>
+                        <div class="col-md-8 col-sm-7 margin-left-list">
+                            <div class="adventure-list-container" style="width: 100%;">
+                                <div class="adventure-list-text">
+                                    <h1><a href="#">Experience {{country.country}}</a></h1>
+                                    <div style="height: 150px; overflow: hidden;">{{country.about|safe}}</div>
+                                    <div class="list-buttons">
+                                        <a href="{% url 'country_packages' country.slug %}" class="button-one button-blue">Learn
+                                            More
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="adventure-list-image">
+                                    <div class="image-top">
+                                        <img src="{% static 'main/img/icon/level.png' %}" alt="">
+                                    </div>
+                                    <h2>Easy level</h2>
+                                    <ul class="image-bottom">
+                                        <li><img src="{% static 'main/img/icon/35.png' %}" alt=""></li>
+                                        <li><img src="{% static 'main/img/icon/36.png' %}" alt=""></li>
+                                        <li><img src="{% static 'main/img/icon/37.png' %}" alt=""></li>
+                                        <li><img src="{% static 'main/img/icon/38.png' %}" alt=""></li>
+                                        <li><img src="{% static 'main/img/icon/39.png' %}" alt=""></li>
+                                        <li><img src="{% static 'main/img/icon/40.png' %}" alt=""></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+<!--End of Adventures Grid-->
+{% endblock countries %}

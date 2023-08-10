@@ -1,0 +1,14 @@
+{% load crispy_forms_tags %}
+<form method="POST" enctype="multipart/form-data" action="{% url 'reviews' package.slug %}">
+    {% csrf_token %}
+
+    <div class="comment-form">
+        <div class="row">
+            <div class="col-md-12">
+                {{review_form.media}} {{ review_form|crispy}}
+            </div>
+        </div>
+        <input type="submit" class="comment-btn" value="Add review">
+    </div>
+</form>
+</form>

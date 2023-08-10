@@ -1,0 +1,18 @@
+.answers {
+    margin: 20px;
+}
+
+.trip_date {
+    width: 80%;
+    margin: auto;
+    border-radius: 15px;
+    padding: 10px;
+}
+
+.trip_date>h4 {
+    font-weight: bold;
+    font-size: 15px;
+    letter-spacing: 1px;
+    font-family: 'Raleway';
+    color: #1a2b3a;
+}

@@ -1,0 +1,404 @@
+.nav-tabs {
+    background-color: #1a2b3a;
+    padding: 10px;
+    text-align: center;
+    border-radius: 30px;
+}
+
+.nav-tabs>li>a {
+    font-size: 14px;
+    font-weight: bolder;
+    font-family: inherit;
+    border-radius: 30px;
+    color: #a4d6f3;
+}
+
+.nav-tabs>li.active>a,
+.nav-tabs>li.active>a:focus,
+.nav-tabs>li.active>a:hover {
+    color: #1a2b3a;
+    background-color: #fff;
+}
+
+.profile {
+    width: 70%;
+    margin: auto;
+    padding: 20px;
+    margin-top: 50px;
+    border: 1px solid #eee;
+    /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
+}
+
+.profile>h2 {
+    text-align: center;
+}
+
+.card-profile-image {
+    background-color: green;
+    width: 100%;
+}
+
+.profile-image {
+    display: block;
+    height: 180px;
+    width: 180px;
+    border-radius: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.card-profile-stats {
+    padding: 1rem 0;
+}
+
+.card-profile-stats>div {
+    margin-right: 1rem;
+    padding: .875rem;
+    text-align: center;
+}
+
+.card-profile-stats>div:last-child {
+    margin-right: 0;
+}
+
+.card-profile-stats>div .heading {
+    font-weight: bold;
+    display: block;
+}
+
+.card-profile-stats>div .description {
+    color: #adb5bd;
+}
+
+.d-flex {
+    display: flex !important;
+}
+
+.justify-content-center {
+    justify-content: center !important;
+}
+
+.table>tbody>tr>td {
+    border-top: none;
+}
+
+
+/* Large desktop :1920px. */
+
+@media (min-width: 1920px) {
+    .nav-tabs {
+        background-color: #1a2b3a;
+        padding: 10px;
+        text-align: center;
+    }
+    .nav-tabs>li>a {
+        font-family: inherit;
+        border-radius: 30px;
+    }
+    .profile {
+        width: 70%;
+        margin: auto;
+        padding: 20px;
+        margin-top: 50px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    }
+    .profile>h2 {
+        text-align: center;
+    }
+    .card-profile-image {
+        background-color: green;
+        width: 100%;
+    }
+    .profile-image {
+        display: block;
+        height: 180px;
+        width: 180px;
+        border-radius: 50%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .card-profile-stats {
+        padding: 1rem 0;
+    }
+    .card-profile-stats>div {
+        margin-right: 1rem;
+        padding: .875rem;
+        text-align: center;
+    }
+    .card-profile-stats>div:last-child {
+        margin-right: 0;
+    }
+    .card-profile-stats>div .heading {
+        font-weight: bold;
+        display: block;
+    }
+    .card-profile-stats>div .description {
+        color: #adb5bd;
+    }
+    .d-flex {
+        display: flex !important;
+    }
+    .justify-content-center {
+        justify-content: center !important;
+    }
+    .table>tbody>tr>td {
+        border-top: none;
+    }
+}
+
+
+/* Normal desktop :992px. */
+
+@media (min-width: 992px) and (max-width: 1169px) {
+    .nav-tabs {
+        background-color: #1a2b3a;
+        padding: 10px;
+        text-align: center;
+    }
+    .nav-tabs>li>a {
+        font-family: inherit;
+        border-radius: 30px;
+    }
+    .profile {
+        width: 100%;
+        margin: auto;
+        padding: 20px;
+        margin-top: 50px;
+        border: 1px solid #eee;
+        /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
+    }
+    .profile>h2 {
+        text-align: center;
+    }
+    .card-profile-image {
+        background-color: green;
+        width: 100%;
+    }
+    .profile-image {
+        display: block;
+        height: 180px;
+        width: 180px;
+        border-radius: 50%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .card-profile-stats {
+        padding: 1rem 0;
+    }
+    .card-profile-stats>div {
+        margin-right: 1rem;
+        padding: .875rem;
+        text-align: center;
+    }
+    .card-profile-stats>div:last-child {
+        margin-right: 0;
+    }
+    .card-profile-stats>div .heading {
+        font-weight: bold;
+        display: block;
+    }
+    .card-profile-stats>div .description {
+        color: #adb5bd;
+    }
+    .d-flex {
+        display: flex !important;
+    }
+    .justify-content-center {
+        justify-content: center !important;
+    }
+    .table>tbody>tr>td {
+        border-top: none;
+    }
+}
+
+
+/* Tablet desktop :768px. */
+
+@media (min-width: 768px) and (max-width: 991px) {
+    .nav-tabs {
+        background-color: #1a2b3a;
+        padding: 10px;
+        text-align: center;
+    }
+    .nav-tabs>li>a {
+        font-family: inherit;
+        border-radius: 30px;
+    }
+    .profile {
+        width: 100%;
+        margin: auto;
+        padding: 20px;
+        margin-top: 50px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    }
+    .profile>h2 {
+        text-align: center;
+    }
+    .card-profile-image {
+        background-color: green;
+        width: 100%;
+    }
+    .profile-image {
+        display: block;
+        height: 180px;
+        width: 180px;
+        border-radius: 50%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .card-profile-stats {
+        padding: 1rem 0;
+    }
+    .card-profile-stats>div {
+        margin-right: 1rem;
+        padding: .875rem;
+        text-align: center;
+    }
+    .card-profile-stats>div:last-child {
+        margin-right: 0;
+    }
+    .card-profile-stats>div .heading {
+        font-weight: bold;
+        display: block;
+    }
+    .card-profile-stats>div .description {
+        color: #adb5bd;
+    }
+    .d-flex {
+        display: flex !important;
+    }
+    .justify-content-center {
+        justify-content: center !important;
+    }
+    .table>tbody>tr>td {
+        border-top: none;
+    }
+}
+
+
+/* small mobile :320px. */
+
+@media (max-width: 767px) {
+    .nav-tabs {
+        background-color: #1a2b3a;
+        padding: 10px;
+        text-align: center;
+    }
+    .nav-tabs>li>a {
+        font-family: inherit;
+        border-radius: 30px;
+    }
+    .profile {
+        width: 100%;
+        margin: auto;
+        padding: 20px;
+        margin-top: 50px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    }
+    .profile>h2 {
+        text-align: center;
+    }
+    .card-profile-image {
+        background-color: green;
+        width: 100%;
+    }
+    .profile-image {
+        display: block;
+        height: 180px;
+        width: 180px;
+        border-radius: 50%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .card-profile-stats {
+        padding: 1rem 0;
+    }
+    .card-profile-stats>div {
+        margin-right: 1rem;
+        padding: .875rem;
+        text-align: center;
+    }
+    .card-profile-stats>div:last-child {
+        margin-right: 0;
+    }
+    .card-profile-stats>div .heading {
+        font-weight: bold;
+        display: block;
+    }
+    .card-profile-stats>div .description {
+        color: #adb5bd;
+    }
+    .d-flex {
+        display: flex !important;
+    }
+    .justify-content-center {
+        justify-content: center !important;
+    }
+    .table>tbody>tr>td {
+        border-top: none;
+    }
+}
+
+
+/* Large Mobile :480px. */
+
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+    .nav-tabs {
+        background-color: #1a2b3a;
+        padding: 10px;
+        text-align: center;
+    }
+    .nav-tabs>li>a {
+        font-family: inherit;
+        border-radius: 30px;
+    }
+    .profile {
+        width: 100%;
+        margin: auto;
+        padding: 20px;
+        margin-top: 50px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    }
+    .profile>h2 {
+        text-align: center;
+    }
+    .card-profile-image {
+        background-color: green;
+        width: 100%;
+    }
+    .profile-image {
+        display: block;
+        height: 180px;
+        width: 180px;
+        border-radius: 50%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .card-profile-stats {
+        padding: 1rem 0;
+    }
+    .card-profile-stats>div {
+        margin-right: 1rem;
+        padding: .875rem;
+        text-align: center;
+    }
+    .card-profile-stats>div:last-child {
+        margin-right: 0;
+    }
+    .card-profile-stats>div .heading {
+        font-weight: bold;
+        display: block;
+    }
+    .card-profile-stats>div .description {
+        color: #adb5bd;
+    }
+    .d-flex {
+        display: flex !important;
+    }
+    .justify-content-center {
+        justify-content: center !important;
+    }
+    .table>tbody>tr>td {
+        border-top: none;
+    }
+}

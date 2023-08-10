@@ -1,0 +1,6 @@
+{% load crispy_forms_tags %}
+
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %} {{ imageform|crispy }}
+    <button>Submit</button>
+</form>

@@ -1,0 +1,435 @@
+{% extends 'main/base.html' %} {% block head %}
+<title>Contact Us</title>
+<meta name="description" content="Let us know about your queries.">
+<meta name="keywords" content="adventure travelers, adventure companies, mountaineering tour company, best mountaineering company, best trekking company"> {% endblock head %} {% load static %} {% load crispy_forms_tags %} {% block ContactSEO %}
+<!-- Contact SEO -->
+<script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "UFORangers.com",
+        "url": "https://uforangers.com/",
+        "logo": "https://uforangers.com/static/main/img/icon/mountain-dark.png",
+        "contactPoint": [{
+            "@type": "ContactPoint",
+            "telephone": "+91-8432178308",
+            "contactType": "customer service",
+            "email": "info@uforangers.com",
+            "contactOption": "TollFree",
+            "areaServed": [
+                "US",
+                "CA",
+                "GB",
+                "AF",
+                "AL",
+                "AD",
+                "AS",
+                "AO",
+                "IN",
+                "DZ",
+                "AI",
+                "AQ",
+                "AG",
+                "AM",
+                "AR",
+                "AW",
+                "AU",
+                "AT",
+                "AZ",
+                "BS",
+                "BH",
+                "BD",
+                "BB",
+                "BY",
+                "BE",
+                "BZ",
+                "BJ",
+                "BM",
+                "BT",
+                "BO",
+                "BQ",
+                "BA",
+                "BW",
+                "BV",
+                "BR",
+                "IO",
+                "BN",
+                "BG",
+                "BF",
+                "BI",
+                "CV",
+                "KH",
+                "CM",
+                "KY",
+                "CF",
+                "TD",
+                "CL",
+                "CN",
+                "CX",
+                "CC",
+                "CO",
+                "KM",
+                "CD",
+                "CG",
+                "CK",
+                "CR",
+                "HR",
+                "CU",
+                "CW",
+                "CY",
+                "CZ",
+                "CI",
+                "DK",
+                "DJ",
+                "DM",
+                "DO",
+                "EC",
+                "EG",
+                "SV",
+                "GQ",
+                "ER",
+                "EE",
+                "SZ",
+                "ET",
+                "FK",
+                "FO",
+                "FJ",
+                "FI",
+                "FR",
+                "GF",
+                "PF",
+                "TF",
+                "GA",
+                "GM",
+                "GE",
+                "DE",
+                "GH",
+                "GI",
+                "GR",
+                "GL",
+                "GD",
+                "GP",
+                "GU",
+                "GT",
+                "GG",
+                "GN",
+                "GW",
+                "GY",
+                "HT",
+                "HM",
+                "VA",
+                "HN",
+                "HK",
+                "HU",
+                "IS",
+                "ID",
+                "IR",
+                "IQ",
+                "IE",
+                "IM",
+                "IL",
+                "IT",
+                "JM",
+                "JP",
+                "JE",
+                "JO",
+                "KZ",
+                "KI",
+                "KE",
+                "KP",
+                "KR",
+                "KW",
+                "KG",
+                "LA",
+                "LV",
+                "LB",
+                "LS",
+                "LR",
+                "LY",
+                "LI",
+                "LT",
+                "LU",
+                "MO",
+                "MG",
+                "MW",
+                "MY",
+                "MV",
+                "ML",
+                "MT",
+                "MH",
+                "MQ",
+                "MR",
+                "MU",
+                "YT",
+                "MX",
+                "FM",
+                "MD",
+                "MC",
+                "MN",
+                "ME",
+                "MS",
+                "MA",
+                "MZ",
+                "MM",
+                "NA",
+                "NR",
+                "NP",
+                "NL",
+                "NC",
+                "NZ",
+                "NI",
+                "NE",
+                "NG",
+                "NU",
+                "NF",
+                "MP",
+                "NO",
+                "OM",
+                "PK",
+                "PW",
+                "PS",
+                "PA",
+                "PG",
+                "PY",
+                "PE",
+                "PH",
+                "PN",
+                "PL",
+                "PT",
+                "PR",
+                "QA",
+                "MK",
+                "RO",
+                "RU",
+                "RW",
+                "RE",
+                "BL",
+                "SH",
+                "KN",
+                "LC",
+                "MF",
+                "PM",
+                "VC",
+                "WS",
+                "SM",
+                "ST",
+                "SA",
+                "SN",
+                "RS",
+                "SC",
+                "SL",
+                "SG",
+                "SX",
+                "SK",
+                "SI",
+                "SB",
+                "SO",
+                "ZA",
+                "GS",
+                "SS",
+                "ES",
+                "LK",
+                "SD",
+                "SR",
+                "SJ",
+                "SE",
+                "CH",
+                "SY",
+                "TW",
+                "TJ",
+                "TZ",
+                "TH",
+                "TL",
+                "TK",
+                "TG",
+                "TO",
+                "TT",
+                "TN",
+                "TR",
+                "TM",
+                "TC",
+                "TV",
+                "UG",
+                "UA",
+                "UM",
+                "AE",
+                "UY",
+                "UZ",
+                "VU",
+                "VE",
+                "VN",
+                "VG",
+                "VI",
+                "WF",
+                "EH",
+                "YE",
+                "ZM",
+                "ZW",
+                "AX"
+            ],
+            "availableLanguage": [
+                "en",
+                "hi"
+            ]
+        }]
+    }
+</script>
+{% endblock ContactSEO %} {% block contact %}
+<!--Banner Area Start-->
+<div class="banner-area contact-banner">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section-title text-center">
+                    <div class="title-border">
+                        <h1>Contact <span>Us</span></h1>
+                    </div>
+                    <p class="text-white">We are always ready to help you.<br>Let us know about your queries.</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <ul class="breadcrumb">
+                    <li><a href="{% url 'index' %}">Home</a></li>
+                    <li>Contact Us</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!--End of Banner Area-->
+<!--Contact Information Area Start-->
+<div class="contact-information-area section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section-title text-center">
+                    <div class="title-border">
+                        <h1>Contact <span>Information</span></h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3 col-sm-4">
+                <div class="contact-info text-center">
+                    <div class="contact-image">
+                        <div class="contact-icon">
+                            <div class="icon-table-cell">
+                                <img class="primary-img" src="{% static 'main/img/icon/contact-1.png' %}" alt="">
+                                <img class="secondary-img" src="{% static 'main/img/icon/contact-1-hover.png' %}" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="contact-text">
+                        <h4>Address</h4>
+                        <p>Paknajol, Thamel<br> Kathmandu, 44600</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-4">
+                <div class="contact-info text-center">
+                    <div class="contact-image">
+                        <div class="contact-icon">
+                            <div class="icon-table-cell">
+                                <img class="primary-img" src="{% static 'main/img/icon/contact-1.png' %}" alt="">
+                                <img class="secondary-img" src="{% static 'main/img/icon/contact-1-hover.png' %}" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="contact-text">
+                        <h4>Address</h4>
+                        <p>B-338, Mahesh Nagar<br> Jaipur, 302015</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-4">
+                <div class="contact-info text-center">
+                    <div class="contact-image">
+                        <div class="contact-icon">
+                            <div class="icon-table-cell">
+                                <img class="primary-img" src="{% static 'main/img/icon/contact-2.png' %}" alt="">
+                                <img class="secondary-img" src="{% static 'main/img/icon/contact-2-hover.png' %}" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="contact-text">
+                        <h4>Phone</h4>
+                        <p>+91 8432178308<br> +91 7388340904</p>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="col-md-3 col-sm-4">
+                <div class="contact-info text-center">
+                    <div class="contact-image">
+                        <div class="contact-icon">
+                            <div class="icon-table-cell">
+                                <img class="primary-img" src="{% static 'main/img/icon/contact-3.png' %}" alt="">
+                                <img class="secondary-img" src="{% static 'main/img/icon/contact-3-hover.png' %}" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="contact-text">
+                        <h4>Fax</h4>
+                        <p>(973) 377-5077<br> (001) 254-7359</p>
+                    </div>
+                </div>
+            </div> -->
+            <div class="col-md-3 hidden-sm">
+                <div class="contact-info text-center">
+                    <div class="contact-image">
+                        <div class="contact-icon">
+                            <div class="icon-table-cell">
+                                <img class="primary-img" src="{% static 'main/img/icon/contact-4.png' %}" alt="">
+                                <img class="secondary-img" src="{% static 'main/img/icon/contact-4-hover.png' %}" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="contact-text">
+                        <h4>Email</h4>
+                        <p>info@uforangers.com<br>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--End of Contact Information Area-->
+<!--Contact Form Start-->
+<div class="contact-form">
+    <!-- google-map-area start -->
+    <div class="google-map-area">
+        <!--  Map Section -->
+        <div id="contacts" class="map-area">
+            <div id="googleMap" style="width:100%;height:737px;filter: grayscale(100%);-webkit-filter: grayscale(100%);"></div>
+        </div>
+    </div>
+    <!-- google-map-area end -->
+    <div class="contact-us-form-wrapper">
+        <div class="contact-container">
+            <div class="contact-us-form section-padding">
+                <div class="contact-row">
+                    <div class="contact-column">
+                        <div class="section-title text-center">
+                            <div class="title-border">
+                                <h1>Contact <span>US</span></h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-row">
+                    <div class="contact-column">
+                        <form method="post">
+                            {% csrf_token %}{{query_form|crispy}}
+                            <button>Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--End of Contact Form-->
+{% endblock contact %}

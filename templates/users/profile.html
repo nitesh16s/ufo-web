@@ -1,0 +1,546 @@
+{% extends 'users/base.html' %} {% block profile %} {% load static %} {% load crispy_forms_tags %}
+<link rel="stylesheet" href="{% static 'main/css/packages.css' %}">
+<link rel="stylesheet" href="{% static 'main/css/tab.css' %}">
+<link rel="stylesheet" href="{% static 'main/css/profile.css' %}">
+<style>
+    .banner-area.details-one {
+        padding-bottom: 0;
+        padding-top: 392px;
+        position: relative;
+        background: rgba(0, 0, 0, 0) url("/media/{{request.user.profile.cover_photo}}") no-repeat scroll center top / cover
+    }
+    
+    .icons {
+        height: 14px;
+    }
+</style>
+<!--Slider Area Start-->
+<!--Banner Area Start-->
+<div class="banner-area details-one">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section-title text-center">
+                    <div class="title-border">
+                        <h1>My <span>Profile</span></h1>
+                    </div>
+                    <p class="text-white">{{request.user.profile.about}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <ul class="breadcrumb">
+                    <li><a href="/">Home</a></li>
+                    <li>Profile</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<!--End of Banner Area-->
+
+
+<!-- Name form modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Update Name</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form method="POST" action="{% url 'update_name' %}">
+                    {% csrf_token %} {{form|crispy}}
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Update</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Name form modal end -->
+
+<!--Tab Start-->
+<div class="container">
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item active">
+            <a class="nav-link active" id="overview-tab" data-toggle="tab" href="#overview" role="tab" aria-controls="overview" aria-selected="true">Overview</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="bookings-tab" data-toggle="tab" href="#bookings" role="tab" aria-controls="bookings" aria-selected="false">Bookings</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="on_request_bookings-tab" data-toggle="tab" href="#on_request_bookings" role="tab" aria-controls="on_request_bookings" aria-selected="false">On Request Bookings</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="myblogs-tab" data-toggle="tab" href="#myblogs" role="tab" aria-controls="myblogs" aria-selected="false">My Blogs</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="savedblogs-tab" data-toggle="tab" href="#savedblogs" role="tab" aria-controls="savedblogs" aria-selected="false">Saved Blogs</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="myqueries-tab" data-toggle="tab" href="#myqueries" role="tab" aria-controls="myqueries" aria-selected="false">My Queries</a>
+        </li>
+        <!-- <li class="nav-item">
+            <a class="nav-link" id="myreviews-tab" data-toggle="tab" href="#myreviews" role="tab" aria-controls="myreviews" aria-selected="false">My Reviews</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="mygallery-tab" data-toggle="tab" href="#mygallery" role="tab" aria-controls="mygallery" aria-selected="false">My Gallery</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="mygallery-tab" data-toggle="tab" href="#mygallery" role="tab" aria-controls="mygallery" aria-selected="false">My Followers</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="mygallery-tab" data-toggle="tab" href="#mygallery" role="tab" aria-controls="mygallery" aria-selected="false">My Followings</a>
+        </li> -->
+    </ul>
+    <div style="margin-top: 20px;" class="tab-content" id="myTabContent">
+        <!--Profile Tab Start-->
+        <div class="profile tab-pane fade active in" id="overview" role="tabpanel" aria-labelledby="overview-tab">
+            <img class="profile-image" src="/media/{{request.user.profile.profile_picture}}">
+            <div class="row">
+                <div class="col-xl-8 m-auto order-xl-2 mb-5 mb-xl-0">
+                    <div class="card card-profile shadow">
+                        <div class="card-body pt-0 pt-md-4">
+                            <div class="row">
+                                <div class="col">
+                                    <div class="card-profile-stats d-flex justify-content-center mt-md-5">
+                                        <div>
+                                            <span class="heading">{{followers|length}}</span>
+                                            <span class="description">Followers</span>
+                                        </div>
+                                        <div>
+                                            <span class="heading">{{followings|length}}</span>
+                                            <span class="description">Followings</span>
+                                        </div>
+                                        <!-- <div>
+                                            <span class="heading">89</span>
+                                            <span class="description">Images</span>
+                                        </div> -->
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-center">
+                                <h3>
+                                    {{request.user.first_name}} {{request.user.last_name}} {% if request.user.profile %}
+                                    <small><i title="Update Name" style="cursor: pointer;" data-toggle="modal"
+                                            data-target="#exampleModal" data-whatever="@mdo" class="fa fa-pencil"></i>
+                                    </small> {% endif %}
+                                </h3>
+                                <hr class="my-4">
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <h5>Username
+                                                    </h5>
+                                                </td>
+                                                <td>
+                                                    <h5>{{request.user}}</h5>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <h5>Email
+                                                    </h5>
+                                                </td>
+                                                <td>
+                                                    <h5>{{request.user.email}}</h5>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <h5>Mobile No.
+                                                    </h5>
+                                                </td>
+                                                <td>
+                                                    <h5>{{request.user.profile.mobile}}</h5>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <h5>Gender
+                                                    </h5>
+                                                </td>
+                                                <td>
+                                                    <h5>{{request.user.profile.get_gender_display}}</h5>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <h5>Date of birth
+                                                    </h5>
+                                                </td>
+                                                <td>
+                                                    <h5>{{request.user.profile.dob}}</h5>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <h5>Address
+                                                    </h5>
+                                                </td>
+                                                <td>
+                                                    <h5>{{request.user.profile.house}}, {{request.user.profile.street}}
+                                                    </h5>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <h5>State
+                                                    </h5>
+                                                </td>
+                                                <td>
+                                                    <h5>{{request.user.profile.get_state_display}}</h5>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <h5>Country
+                                                    </h5>
+                                                </td>
+                                                <td>
+                                                    <h5>{{request.user.profile.get_country_display}}</h5>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                {% if request.user.profile %}
+                                <a href="{% url 'update_profile' request.user.username %}">
+                                    <button class="booking-button-two">
+                                        Update Profile
+                                    </button>
+                                </a>
+                                {% else %}
+                                <a href="{% url 'create_profile' %}">
+                                    <button class="booking-button-two">
+                                        Create Profile
+                                    </button>
+                                </a>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--End of Profile Tab-->
+
+        <!-- Start of Bookings Tab -->
+        <div class="tab-pane fade" id="bookings" role="tabpanel" aria-labelledby="bookings-tab">
+            {% if bookings %} {% for booking in bookings %}
+            <div class="col-md-6 col-sm-6 ">
+                <div class="single-portfolio">
+                    <div class="single-gallery-item hover-effect">
+                        <div class="gallery-image box-hover">
+                            <a href="{% url 'package_detail' booking.package.country.slug booking.package.region.slug booking.package.slug %} "><img class="package-image " src="/media/{{booking.package.package_image}} " alt=" "></a>
+                        </div>
+                        <div class="gallery-text">
+                            <div class="middle-text">
+                                <div class="trip_date">
+                                    <h4>
+                                        Confirmed: {{ booking.is_confirmed }}
+                                    </h4>
+                                    <h4>
+                                        Contact: {{ booking.package.user.profile.mobile }}
+                                    </h4>
+                                    <h4>
+                                        Start Date: {{booking.schedule.start_date}} <br> End Date: {{booking.schedule.end_date}}
+                                    </h4>
+                                    <h4>
+                                        No. of seats: {{booking.seat_count}}
+                                    </h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="package-bottom">
+                        <div class="package-name ">
+                            <a href="{% url 'package_detail' booking.package.country.slug booking.package.region.slug booking.package.slug %}">
+                                <i class="fa fa-map-marker "></i> {{booking.package.name}} - {{booking.package.duration}} days.
+                            </a>
+                        </div>
+                        <div class="row package-detail">
+                            <div class="col-md-4 col-sm-4 ">
+                                <div class="row ">
+                                    <div class="col-md-4 ">
+                                        <img class="package-activity-image " src="{% static 'main/img/icon/svgs/solid/hiking.svg' %} ">
+                                    </div>
+                                    <div class="col-md-8 ">
+                                        <small>Activity</small>
+                                        <p>{% for activity in booking.package.activity.all %} {{ activity }} {% endfor %}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-4 ">
+                                <div class="row ">
+                                    <div class="col-md-4 ">
+                                        <img class="package-activity-image " src="{% static 'main/img/icon/svgs/solid/clock.svg' %} ">
+                                    </div>
+                                    <div class="col-md-8 ">
+                                        <small>Duration</small>
+                                        <p>{{ booking.package.duration }} days</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-4 ">
+                                <div class="row ">
+                                    <div class="col-md-4 ">
+                                        <img class="package-activity-image " src="{% static 'main/img/icon/svgs/solid/tachometer-alt.svg' %} ">
+                                    </div>
+                                    <div class="col-md-8 ">
+                                        <small>Grade</small>
+                                        <p>{{booking.package.get_difficulty_display}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %} {% else %}
+            <p>No bookings yet</p>
+            {% endif %}
+        </div>
+        <!-- End of Bookings Tab -->
+
+        <!-- Start of on request bookings tab -->
+        <div class="tab-pane fade" id="on_request_bookings" role="tabpanel" aria-labelledby="on_request_bookings-tab">
+            {% if on_request_bookings %} {% for booking in on_request_bookings %}
+            <div class="col-md-6 col-sm-6 ">
+                <div class="single-portfolio">
+                    <div class="single-gallery-item hover-effect">
+                        <div class="gallery-image box-hover">
+                            <a href="{% url 'package_detail' booking.package.country.slug booking.package.region.slug booking.package.slug %}"><img class="package-image " src="/media/{{booking.package.package_image}} " alt=" "></a>
+                        </div>
+                        <div class="gallery-text">
+                            <div class="middle-text">
+                                <div class="trip_date">
+                                    <h4>
+                                        Confirmed: {{ booking.is_confirmed }}
+                                    </h4>
+                                    <h4>
+                                        Contact: {{ booking.package.user.profile.mobile }}
+                                    </h4>
+                                    <h4>Start Date: {{booking.start_date}} <br> End Date: {{booking.end_date}}</h4>
+                                    <h4>No. of seats: {{booking.seat_count}}</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="package-bottom">
+                        <div class="package-name ">
+                            <a href="{% url 'package_detail' booking.package.country.slug booking.package.region.slug booking.package.slug %}">
+                                <i class="fa fa-map-marker "></i> {{booking.package.name}} - {{booking.package.duration}} days.
+                            </a>
+                        </div>
+                        <div class="row package-detail">
+                            <div class="col-md-4 col-sm-4 ">
+                                <div class="row ">
+                                    <div class="col-md-4 ">
+                                        <img class="package-activity-image " src="{% static 'main/img/icon/svgs/solid/hiking.svg' %} ">
+                                    </div>
+                                    <div class="col-md-8 ">
+                                        <small>Activity</small>
+                                        <p>{% for activity in booking.package.activity.all %} {{ activity }} {% endfor %}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-4 ">
+                                <div class="row ">
+                                    <div class="col-md-4 ">
+                                        <img class="package-activity-image " src="{% static 'main/img/icon/svgs/solid/clock.svg' %} ">
+                                    </div>
+                                    <div class="col-md-8 ">
+                                        <small>Duration</small>
+                                        <p>{{booking.package.duration}} days</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-4 ">
+                                <div class="row ">
+                                    <div class="col-md-4 ">
+                                        <img class="package-activity-image " src="{% static 'main/img/icon/svgs/solid/tachometer-alt.svg' %} ">
+                                    </div>
+                                    <div class="col-md-8 ">
+                                        <small>Grade</small>
+                                        <p>{{booking.package.get_difficulty_display}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %} {% else %}
+            <p>No bookings yet</p>
+            {% endif %}
+        </div>
+        <!-- End of on request bookings tab -->
+
+        <!-- Start of Blogs Tab -->
+        <div class="tab-pane fade" id="myblogs" role="tabpanel" aria-labelledby="myblogs-tab">
+            {% if blogs %}
+            <!--Blog Post Area Start-->
+            <div class="blog-post-area section-padding">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="sidebar-widget">
+                                <div class="single-sidebar-widget">
+                                    <h4>Search <span>Blog</span></h4>
+                                    <form id="text-search" action="#">
+                                        <input type="text" placeholder="Search Here .....">
+                                        <button class="submit"><i class="fa fa-search"></i></button>
+                                    </form>
+                                </div>
+                                <div class="clearfix"></div>
+                                <div class="single-sidebar-widget country-select">
+                                    <h4>Select <span>Categories</span></h4>
+                                    <ul class="widget-categories">
+                                        {% for activity in activities %}
+                                        <li><a href="{% url 'blog_category' activity.slug %}">{{activity.activity}}</a>
+                                        </li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-9">
+                            {% for blog in blogs %}
+                            <div class="single-blog-post">
+                                <div class="single-blog-post-img">
+                                    <a href="#"><img style="width: 100%;" src="/media/{{blog.blog_image}}" alt=""></a>
+                                    <div class="date-time">
+                                        <span class="date ">{{blog.createdAt|date:"d "}}</span>
+                                        <span class="month ">{{blog.createdAt|date:"M "}}</span>
+                                    </div>
+                                </div>
+                                <div class="single-blog-post-text">
+                                    <h4><a href="{% url 'blog_detail' blog.slug %}">{{blog.title}}</a></h4>
+                                    <div class="author-comments">
+                                        <span><i class="fa fa-user"></i>{{blog.author}}</span>
+                                        <span><i class="fa fa-clock-o"></i>{{blog.createdAt}}</span>
+                                    </div>
+                                    <!-- <p>{{blog.content}}</p> -->
+                                </div>
+                                <div class="blog-button-links">
+                                    <a href="{% url 'blog_detail' blog.slug %}" class="blog-button">Read More...</a>
+                                </div>
+                            </div>
+                            {% endfor %}
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--End of Blog Post Area -->
+            {% else %}
+            <p>No blogs yet</p>
+            {% endif %}
+        </div>
+        <!-- End of Blogs tab -->
+
+        <!-- Start of saved blogs tab -->
+        <div class="tab-pane fade" id="savedblogs" role="tabpanel" aria-labelledby="savedblogs-tab">
+            {% if savedblogs %}
+            <!--Blog Post Area Start-->
+            <div class="blog-post-area section-padding">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="sidebar-widget">
+                                <div class="single-sidebar-widget">
+                                    <h4>Search <span>Blog</span></h4>
+                                    <form id="text-search" action="#">
+                                        <input type="text" placeholder="Search Here .....">
+                                        <button class="submit"><i class="fa fa-search"></i></button>
+                                    </form>
+                                </div>
+                                <div class="clearfix"></div>
+                                <div class="single-sidebar-widget country-select">
+                                    <h4>Select <span>Categories</span></h4>
+                                    <ul class="widget-categories">
+                                        {% for activity in activities %}
+                                        <li><a href="{% url 'blog_category' activity.slug %}">{{activity.activity}}</a>
+                                        </li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-9">
+                            {% for blog in saved %}
+                            <div class="single-blog-post">
+                                <div class="single-blog-post-img">
+                                    <a href="#"><img style="width: 100%;" src="/media/{{blog.blog_image}}" alt=""></a>
+                                    <div class="date-time">
+                                        <span class="date ">{{blog.createdAt|date:"d "}}</span>
+                                        <span class="month ">{{blog.createdAt|date:"M "}}</span>
+                                    </div>
+                                </div>
+                                <div class="single-blog-post-text">
+                                    <h4><a href="{% url 'blog_detail' blog.slug %}">{{blog.title}}</a></h4>
+                                    <div class="author-comments">
+                                        <span><i class="fa fa-user"></i>{{blog.author}}</span>
+                                        <span><i class="fa fa-clock-o"></i>{{blog.createdAt}}</span>
+                                    </div>
+                                    <!-- <p>{{blog.content}}</p> -->
+                                </div>
+                                <div class="blog-button-links">
+                                    <a href="{% url 'blog_detail' blog.slug %}" class="blog-button">Read More...</a>
+                                </div>
+                            </div>
+                            {% endfor %}
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--End of Blog Post Area -->
+            {% else %}
+            <p>No saved blogs yet.</p>
+            {% endif %}
+        </div>
+        <!-- End of saved blogs tab -->
+
+        <!-- Start of myqueries tab -->
+        <div class="tab-pane fade" id="myqueries" role="tabpanel" aria-labelledby="myqueries-tab">
+            {% if queries %} {% for query in queries %}
+            <h4>{{query.query}}</h4> -
+            <i><small>
+                    <a onclick="showAnswers({{query.id}})" style="cursor: pointer;">
+                        Show answers
+                        <div id="answers">
+                        </div>
+                    </a>
+                </small></i> {% endfor %} {% else %}
+            <p>No queries yet.</p>
+            {% endif %}
+        </div>
+        <!-- End of myqueries tab -->
+
+        <!-- Start of reviews tab -->
+        <div class="tab-pane fade" id="myreviews" role="tabpanel" aria-labelledby="myreviews-tab">
+            {% for review in reviews %} {{review}}<br> {% endfor %}
+        </div>
+        <!-- End of reviews tab -->
+
+        <!-- Start of gallery tab -->
+        <div class="tab-pane fade" id="mygallery" role="tabpanel" aria-labelledby="mygallery-tab">
+            {% for booking in bookings %} {{booking.package.name}}<br> {% endfor %}
+        </div>
+        <!-- End of gallery tab -->
+
+    </div>
+</div>
+<!--End of Tab-->
+{% endblock profile %}

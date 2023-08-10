@@ -1,0 +1,185 @@
+{% extends 'main/base.html' %} {% load static %} {% block head %}
+<title>Search Results</title>
+{% endblock head %}
+
+
+{% block search_results %}
+
+<link rel="stylesheet" href="{% static 'main/css/packages.css' %}">
+<style>
+    .banner-area {
+        padding-bottom: 0;
+        padding-top: 392px;
+        position: relative;
+        background: rgba(0, 0, 0, 0) url("/static/main/img/images/21.jpg") no-repeat scroll center top / cover;
+    }
+</style>
+<!--Banner Area Start-->
+<div class="banner-area grid">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section-title text-center">
+                    <div class="title-border">
+                        <h1>Your <span>Search Results</span></h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <ul class="breadcrumb">
+                    <li><a href="/">Home</a></li>
+                    <li>Search</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!--End of Banner Area-->
+<!--Adventures Grid Start-->
+<div class="adventures-grid section-padding">
+    <div class="container">
+        <div class="row allpackages">
+            {% for package in packages %}
+            <div class="col-md-6 col-sm-6 ">
+                <div class="single-portfolio">
+                    {% if package.booking_option %}
+                    <div class="pacakge-cost" style="margin-bottom: 20px; padding: 10px;">
+                        <small>
+                            <a style=" color: rgba(255, 255, 255, 0.75); "
+                                href="{% url 'on_request_booking' package.country.slug package.region.slug package.slug %} ">
+                                On Request Booking.
+                            </a>
+                        </small>
+                    </div>
+                    {% else %}
+                    <div class="pacakge-cost ">
+                        <small><i>from </i><del>{{package.currency}} {{package.original_cost}}</del></small>
+                        <p>{{package.currency}} <strong>{{package.group_cost}}</strong><small><sup>pp</sup></small>
+                        </p>
+                        <small>{{package.get_gst_option_display}}</small>
+                    </div>
+                    {% endif %} {% if package.category.id == 1 %}
+                    <div class="package-tags " style="background-color: rgba(0,182,0,0.8); ">
+                        <i class="fa fa-star "></i> <strong>{{package.category}}</strong>
+                    </div>
+                    {% elif package.category.id == 2 %}
+                    <div class="package-tags " style="background-color: rgba(250,100,0,0.8); ">
+                        <i class="fa fa-group "></i> {{package.category}}
+                    </div>
+                    {% else %}
+                    <div class="package-tags " style="background-color: rgba(171,24,47,0.8); ">
+                        <i class="fa fa-lock "></i> {{package.category}}
+                    </div>
+                    {% endif %}
+                    <a href="{% url 'package_detail' package.country.slug package.region.slug package.slug %} ">
+                        <img class="package-image " src="/media/{{package.package_image}} "
+                            alt="{{ package.name }} in {{ package.country }}"></a>
+                    <div class="package-bottom ">
+                        <div class="package-name ">
+                            <a href="{% url 'package_detail' package.country.slug package.region.slug package.slug %} ">
+                                <i class="fa fa-map-marker "></i> {{package.name}} - {{package.duration}} days.
+                            </a>
+                        </div>
+                        <div class="row package-detail ">
+                            <div class="col-md-4 col-sm-4 ">
+                                <div class="row ">
+                                    <div class="col-md-4 ">
+                                        <img class="package-activity-image "
+                                            src="{% static 'main/img/icon/svgs/solid/hiking.svg' %} ">
+                                    </div>
+                                    <div class="col-md-8 ">
+                                        <small>Activity</small>
+                                        <p class="activity-scroll ">{% for activity in package.activity.all %}
+                                            <small>{{activity}},</small> {% endfor %}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-4 ">
+                                <div class="row ">
+                                    <div class="col-md-4 ">
+                                        <img class="package-activity-image "
+                                            src="{% static 'main/img/icon/svgs/solid/clock.svg' %} ">
+                                    </div>
+                                    <div class="col-md-8 ">
+                                        <small>Duration</small>
+                                        <p>{{package.duration}} days</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-4 ">
+                                <div class="row ">
+                                    <div class="col-md-4 ">
+                                        <img class="package-activity-image "
+                                            src="{% static 'main/img/icon/svgs/solid/tachometer-alt.svg' %} ">
+                                    </div>
+                                    <div class="col-md-8 ">
+                                        <small>Grade</small>
+                                        <p>{{package.get_difficulty_display}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+<!--End of Adventures Grid-->
+
+<!--Blog Area Start-->
+<!-- <div class="blog-area section-padding ">
+    <div class="container ">
+        <div class="row ">
+            <div class="col-md-12 ">
+                <div class="section-title text-center ">
+                    <div class="title-border ">
+                        <h1>Related <span>Blogs</span></h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row ">
+            <div class="blog-carousel ">
+                {% if blogs %} {% for blog in blogs %}
+                <div class="col-md-6 ">
+                    <div class="single-blog hover-effect ">
+                        <div class="row ">
+                            <div class="col-md-6 col-sm-6 ">
+                                <div class="blog-image box-hover ">
+                                    <a href="{% url 'blog_detail' blog.slug %} "><img src="/media/{{blog.blog_image}} " alt=" "></a>
+                                    <div class="date-time ">
+                                        <span class="date ">{{blog.createdAt|date:"d "}}</span>
+                                        <span class="month ">{{blog.createdAt|date:"M "}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-6 margin-left ">
+                                <div class="blog-text ">
+                                    <h4><a href="{% url 'blog_detail' blog.slug %} ">{{blog.title}}</a></h4>
+                                    <p><i class="fa fa-user "></i> {{blog.author}}</p>
+                                    <a href="{% url 'blog_detail' blog.slug %} " class="button-one ">Read More...</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %} {% else %}
+                <div class="col-md-6 ">
+                    <div class="single-blog hover-effect ">
+                        <div class="row ">
+                            No blog has been added yet.
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div> -->
+<!--End of Blog Area-->
+
+{% endblock search_results %}

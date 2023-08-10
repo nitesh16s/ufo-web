@@ -1,0 +1,307 @@
+{% extends 'main/base.html' %} {% load static %} {% block head %}
+<title>About Us</title>
+<meta name="description" content="Exploring with UFORangers is the ultimate way to achieve and celebrate your dreams. Accompany you for your dream adventure is Ikigai (the reason to wake up every day) for us. For more than 20 years we’ve brought people together from all over the globe, showed them the path, stood beside them to celebrate their dream and create lifelong connection. Yes That’s we are UFORangers ! Giving opportunity to selfdiscover, face your fears & exceed your limitations.">
+<meta name="keywords" content=""> {% endblock head %} {% block about %}
+<link rel="stylesheet" href="{% static 'main/css/about.css' %}">
+<!--Banner Area Start-->
+<div class="banner-area about-banner">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section-title text-center">
+                    <div class="title-border">
+                        <h1>About <span>Us</span></h1>
+                    </div>
+                    <p class="text-white" style="font-weight: bolder; font-family: 'Raleway';">Exploring with UFORangers is the ultimate way to achieve and celebrate your dreams. Accompany you for your dream adventure is Ikigai (the reason to wake up every day) for us. For more than 20 years we’ve brought people together from
+                        all over the globe, showed them the path, stood beside them to celebrate their dream and create lifelong connection. Yes That’s we are UFORangers ! Giving opportunity to selfdiscover, face your fears & exceed your limitations...
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <ul class="breadcrumb">
+                    <li><a href="{% url 'index' %}">Home</a></li>
+                    <li>About us</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!--End of Banner Area-->
+<!--About Area Start-->
+<div class="container" style="margin-top: 30px;">
+    <div>
+        <h3 class="about-title" onclick="showMore('one')">
+            <i class="fa fa-plus" id="drop_one_plus"></i>
+            <i class="fa fa-minus hide" id="drop_one_minus"></i> Quick Info
+        </h3>
+        <p id="one" class="about-more hide">
+            We are an independent ultimate outdoor adventure management consultant team, a company that specializes in promoting Adventure Sports in the domain of mountaineering. This company is owned & professionally managed by bunch of climbers. Our passion towards
+            climbing mountains extends across regions and boundaries, encompassing in the Nepal & Indian Himalayas, as well as iconic summits such as Kilimanjaro in Africa, Mt. Elbrus in Russia, Mt. Aconcagua in South America, Mt. Blanc in France. We
+            have explored and experienced the unspoiled flora, fauna and landscapes of the towering Himalayas as well as the treasures of myth and legend of Nepal, Tibet, Bhutan and India. Our endeavor is to instill in each one of our clients, the confidence
+            to not just dream about these incredible destinations, but to join us in exploring them. We offer a splendid alternative solution for adventure, fun, research, and eco tourism to different countries. Using our experience, we have been able
+            to branch into diverse fields such as Experienced Bases Learning & Development Programs Individuals, Groups & Corporate companies. Using adventure sports as a platform, we have developed in house “Experiential Learning Programs”, being conducted
+            in Community, Schools, colleges and other educational institutions. We focus on taking Adventure sports to a completely new level by combing it with “Life Skills”' such as Leadership Communication Skill Development as well as enhancing better
+            ‘Interpersonal Skills’. This unique blend of Adventure Sports and Personality Development creates a fantastic opportunity for self-discovery, compelling our participants to overcome their fears & exceed limitations. Let us guide & teach you
+            on the journey of a lifetime.
+        </p>
+    </div>
+    <hr>
+    <div>
+        <h3 class="about-title" onclick="showMore('two')">
+            <i class="fa fa-plus" id="drop_two_plus"></i>
+            <i class="fa fa-minus hide" id="drop_two_minus"></i> Why select UFORangers to be your Travel Partner?
+        </h3>
+        <p id="two" class="about-more hide">
+            UFORangers is a Nepal-based global adventure management company specializing in nature, culture, adventure and research. Our management as well as all guides and other employees have hands on experience on the in trekking, managing base camp services,
+            climbing and mountaineering services, guiding, organizing and managing individual and group trekking and expeditions. Our more than two decades of mountain experiences, whatever be your goal and whatever your condition, make it happen. We
+            assure our customers of a high quality services, ultimate satisfaction, security and safety. We never stop exploring new unspoiled destinations and pioneering new routes. Honesty and simplicity are vital slogans of Rangers. Our fully equipped
+            and insured guides and Sherpas will never tire to make your holiday one of your most memorable, remarkable and valuable experiences.
+        </p>
+    </div>
+    <hr>
+    <div>
+        <h3 class="about-title" onclick="showMore('three')">
+            <i class="fa fa-plus" id="drop_three_plus"></i>
+            <i class="fa fa-minus hide" id="drop_three_minus"></i> More than 20 years of Trek Route Experience
+        </h3>
+        <p id="three" class="about-more hide">
+            Our trekking team has more than 20 years route experience in remote adventure, peak climbing, expeditions, culture and nature research, whatever your condition we will help you to achieve your final goal. We believe in adventure beyond the fun. We are
+            more specialized in unbeaten and unspoiled nature finder trekking operator.
+        </p>
+    </div>
+    <hr>
+    <div>
+        <h3 class="about-title" onclick="showMore('four')">
+            <i class="fa fa-plus" id="drop_four_plus"></i>
+            <i class="fa fa-minus hide" id="drop_four_minus"></i> Customize Trip Design (Personalized Trips)
+        </h3>
+        <p id="four" class="about-more hide">
+            We have extensive logistical experience in both individual (One on One) and group tour operations. We customize your adventure as per requirement and always committed to give life experience. UFORangers guide, assistant guide, stuff members are well known
+            to Nepal trekking routs, high adventure passes, climbing and mountaineering, cultural tours, exploration, learning programs and many more.
+        </p>
+    </div>
+    <hr>
+    <div>
+        <h3 class="about-title" onclick="showMore('five')">
+            <i class="fa fa-plus" id="drop_five_plus"></i>
+            <i class="fa fa-minus hide" id="drop_five_minus"></i> Comfort & Safety
+        </h3>
+        <p id="five" class="about-more hide">
+            Safety and trip comfort are top priorities of the company inclusively to both clients and trekking crews. Our trekking leaders are WFR, WAFA trained and have considerable knowledge on AMS (Acute Mountain Sickness) from different training workshops conducted
+            by Mountaineering Association of Nepal. We believe health is wealth: Guides and porters are fully insured and sufficient trekking gear is supplied by UFORngers. Emergency First Aid Kits are carried by trek leaders for health support for clients
+            and trekking staff. We are constantly in communication with our trek leaders about weather issues which might influence trips. Stress Free - Worry Free Travel Our tour leaders constantly share information with our clients. All meals, accommodation
+            and transportation are smoothly arranged by the company. Clients can take it easy sit back, relax, feel the holiday recreation and enjoy each moment as you wish to.
+        </p>
+    </div>
+    <hr>
+    <div>
+        <h3 class="about-title" onclick="showMore('six')">
+            <i class="fa fa-plus" id="drop_six_plus"></i>
+            <i class="fa fa-minus hide" id="drop_six_minus"></i> Fixed price, no hidden cost
+        </h3>
+        <p id="six" class="about-more hide">
+            Our prices are extremely competitive and our service will touch your feelings. We have a good business relationship with domestic and international airlines, hotels and resorts and are the sole agents for several treks and tours. We guarantee fair prices
+            and top class unexpected Services. We offer a transparent travel service and no hidden costs will hit our clients during their trip.
+        </p>
+    </div>
+    <hr>
+    <div>
+        <h3 class="about-title" onclick="showMore('seven')">
+            <i class="fa fa-plus" id="drop_seven_plus"></i>
+            <i class="fa fa-minus hide" id="drop_seven_minus"></i> Gender Equality
+        </h3>
+        <p id="seven" class="about-more hide">
+            “It’s time that we all see gender as a spectrum instead of two set of opposing ideals” Our team consist equal no of passionate, experienced female trek leaders, expedition leaders and they committed to help you to achieve your mountain dreams.
+        </p>
+    </div>
+    <hr>
+    <div>
+        <h3 class="about-title" onclick="showMore('eight')">
+            <i class="fa fa-plus" id="drop_eight_plus"></i>
+            <i class="fa fa-minus hide" id="drop_eight_minus"></i> True Value for Your Holiday
+        </h3>
+        <p id="eight" class="about-more hide">
+            Traveling is an investment and we assure the best value for your money. Our prices are always competitive and contain no hidden costs. “Integrity of Agreement” is one of our slogan(s) which will make your adventure most memorable and remarkable. We aim
+            to build relationships from guest to friend. Your satisfaction is our potential business; colleagues and relatives are future customers. Rather just slogans.
+        </p>
+    </div>
+    <hr>
+    <div>
+        <h3 class="about-title" onclick="showMore('nine')">
+            <i class="fa fa-plus" id="drop_nine_plus"></i>
+            <i class="fa fa-minus hide" id="drop_nine_minus"></i> Flexible Trips, Group Size and Departures
+        </h3>
+        <p id="nine" class="about-more hide">
+            We organize treks for groups with specific interests and will adjust itineraries for groups with age-specific requirements. Group sizes can range from a single trekker up to a maximum of 15 people.
+        </p>
+    </div>
+    <hr>
+    <div>
+        <h3 class="about-title" onclick="showMore('ten')">
+            <i class="fa fa-plus" id="drop_ten_plus"></i>
+            <i class="fa fa-minus hide" id="drop_ten_minus"></i> Wide range of travel package
+        </h3>
+        <p id="ten" class="about-more hide">
+            We offers a one stop travel solution and is proud to inform our valued clients that all types of travel service, including international air bookings, visa services for India, Nepal, Africa, Europe Tibet, Bhutan, and China are on offer. Apart from trekking,
+            we are the sole agents for mountain climbing expeditions, white water rafting, wildlife safaris, cultural tours, bird watching tours as well as budget and group tours to Tibet, Bhutan and other continents.
+        </p>
+    </div>
+    <hr>
+    <div>
+        <h3 class="about-title" onclick="showMore('eleven')">
+            <i class="fa fa-plus" id="drop_eleven_plus"></i>
+            <i class="fa fa-minus hide" id="drop_eleven_minus"></i> World Class Travel Service
+        </h3>
+        <p id="eleven" class="about-more hide">
+            All our guides are highly trained and qualified for trekking and mountaineering. They are trained and skilled in mountain sickness (first Aid) treatment. They are also knowledgeable about local cultures and customs, flora and fauna which will add value
+            and interest to your experience. Our professional and experienced guides take care of the myriad trip details, to make sure everything runs smoothly and everyone has fun.
+        </p>
+    </div>
+    <hr>
+    <div>
+        <h3 class="about-title" onclick="showMore('twelve')">
+            <i class="fa fa-plus" id="drop_twelve_plus"></i>
+            <i class="fa fa-minus hide" id="drop_twelve_minus"></i> Responsible Tourism
+        </h3>
+        <p id="twelve" class="about-more hide">
+            We sincerely practice for responsible tourism and work to minimize our impact on nature, local societies and cultures and be environmentally friendly. We actively promote eco tourism and clean-up campaign in different part of Mountains.
+        </p>
+    </div>
+    <hr>
+    <div>
+        <h3 class="about-title" onclick="showMore('thirteen')">
+            <i class="fa fa-plus" id="drop_thirteen_plus"></i>
+            <i class="fa fa-minus hide" id="drop_thirteen_minus"></i> Walking and Helping
+        </h3>
+        <p id="thirteen" class="about-more hide">
+            We believe in “give and take,” and are directly affiliated to social work reforms in remote villages where we trek. We point your helping hands towards places where there is no education, health care (healthcare) or clean drinking water. We send 5% of
+            our total profit from your treks to support your trekking region. You can inspect the progress of our charity work while on your trek.
+        </p>
+    </div>
+    <hr>
+    <div>
+        <h3 class="about-title" onclick="showMore('fourteen')">
+            <i class="fa fa-plus" id="drop_fourteen_plus"></i>
+            <i class="fa fa-minus hide" id="drop_fourteen_minus"></i> Booking Terms and Conditions
+        </h3>
+        <div id="fourteen" class="about-more hide">
+            <p>
+                <b>Please, read ‘Terms and Conditions’ carefully prior to trip booking</b>
+            </p>
+            <p>
+                Trekking or Mountaineering in the higher elevation of the Himalayas is one of the most adventurous endeavors which inherit the risk of AMS or injuries or even death. UFORangers is always concern regarding the comfort, safety and health of trekkers while
+                meandering in higher altitude. We contribute great effort to reduce or control the risk and hazard; but sometime nature’s curse or fluctuate climate in Himalayas is beyond our control and we are not responsible for it. If you are a keen
+                adventure lover and are ready to follow the hereby mentioned Terms and Conditions then you are heartily welcome at our office Thamel, Kathmandu, Nepal. Jaipur, India.
+            </p>
+            <br>
+            <b>
+                BOOKING TERMS AND CONDITIONS:
+            </b>
+            <p>
+                1. All the bookings of the packages are dealt with UFORanger Treks and Expedition which is an authorized adventure company based in capital of Nepal: Kathmandu.
+            </p>
+            <p>
+                2. The term ‘Trip’ formally refers to walking, sightseeing, treks, tours, mountaineering, expeditions or holiday in the mystical land, Nepal.
+            </p>
+            <p>
+                3. UFORangers faithfully offers all the amenities in the estimated price of the package.
+            </p>
+            <p>
+                4. Please go through itinerary page or trek inclusion page for the detail information of the cost transparency. The trek cost may vary from one package to another and some packages don’t include the cost of the following:  Personal travel insurance,
+                medical assistance and helicopter evacuation.  Visa, Passport and transit point expenses.  Extra meals, entertainment activities, accommodation, transportation costs are not included in the itinerary.  Laundry, postal, medicine, clothing,
+                gears and personal expenses.  Tips and excess baggage charge.
+            </p>
+            <p>
+                5. The travelers must pay 25% upfront out of the total trip cost for the trip conformation.
+            </p>
+            <p>
+                6. You can pay the booking conformation amount either by credit card, wire transfer, bank transfer both payment option subject to charge additional bank service fees up to 4% on top of the sum.
+            </p>
+            <p>
+                7. The trip will be booked once the payment is made by the travelers. We will send you the conformation email through online and assure to provide all the service detail as mentioned in the itinerary.
+            </p>
+            <p>
+                8. The final payment must be submitted at the UFORangers office before the tip departure. Otherwise, you will not be legitimate for trip and no final documentation will be disclosed before the payment.
+            </p>
+            <p>
+                09. Regarding trip cancellation, we entertain free trip cancellation service upon submission of trustable reason before 90 days of the departure date upon adequate evidence and written reasons.
+            </p>
+            <p>
+                10. If you cancel the trip 60 days prior to the departure date then 75% cancellation fee will be levied from the booking amount.
+            </p>
+            <p>
+                11. 85% cancellation fee will be levied if you cancel the trip before 30 days of the trip departure date.
+            </p>
+            <p>
+                12. The company will be unable to refund the earlier paid (25%) booking payment if you cancel the trek prior to 15 days of the departure date.
+            </p>
+            <p>
+                13. There will be no payment refund if you voluntarily leave or cancel the trip once it is started; but if you are forced to leave due to unforeseen immediate circumstances then payment can be refunded after proper discretion.
+            </p>
+            <p>
+                14. We guarantee your safe and successful trip; however, the company reserves the authority to cancel the trip if there will be no minimum number (2) of travelers. In this condition, company will postpone or manage alternative trip.
+            </p>
+            <p>
+                15. If the company cancels the trip due to any unforeseen circumstances which are beyond our control (i.e. natural disaster, flight cancellation, strikes, wars, riots, quarantine, government intervention policy, weather condition), we will refund after
+                deduction of minimum operating cost involved.
+            </p>
+            <p>
+                16. If you want to change your booking date, the booking amendment request must be made 90 days prior to the original trip departure.
+            </p>
+            <p>
+                17. If trekkers demand to change the departure date prior to 60 days of the final departure, US $ 50.00 per person will be charged as cancelation fee. The charge of the trip may also be increased if the market price soars higher during the postponed trip
+                date.
+            </p>
+            <p>
+                18. The policy of our company is: Trekkers must have insurance policy contract if they want to trek with UFORangers. The policy must feature: medical coverage, air ambulance, helicopter evacuation facility, as well as flight cancellation insurance if
+                possible.
+            </p>
+            <p>
+                19. We organize various adventurous trips which have high risk factor and demand more physical stamina plus training. If you can’t accomplish the trek due to your physical inability or sickness, we are not obliged to refund the payment.
+            </p>
+            <p>
+                20. There may appear hindrance, obstacles or circumstances like: political riot, insurgency, accident, climate change, or natural disasters during the course of trip. Make sure you are ready to deal with all these problems.
+            </p>
+            <p>
+                21. The trip route, accommodation, modes of transport may be changed without prior notice due to the unforeseen circumstances. It is for your convenience and safety, so hope you will display flexible human nature in this context.
+            </p>
+            <p>
+                22. While changing the route, transportation, accommodation, or itinerary due to above circumstances, we may charge additional cost or lessen the cost as per the total expenses of the entire trek.
+            </p>
+            <p>
+                23. UFORangers holds all the authority to decline, accept, detain or retain any members of the trip if we find anyone suspicious or indiscipline. If you want to trek with UFORangers, you must accept our leadership during the whole trip.
+            </p>
+            <p>
+                24. UFORangers has contracted with network of companies, government of Nepal, individuals to assist the travelers during the trip. These third parties are qualified to perform their duties as contracted. We are not liable in case of loss, damage, irregularities
+                if the third parties don’t perform their duties properly.
+            </p>
+            <p>
+                25. UFORangers is not responsible for the violation of any law or rules committed by the travelers in any country.
+            </p>
+            <p>
+                26. This agreement is governed by the laws of the Government . No any individual: employees, representatives, guides of the company can alter the terms and conditions.
+            </p>
+            <p>
+                27. These terms and conditions may only be waived in special circumstances with written application to the director. Only the director of the company has all the right to amend them.
+            </p>
+            <p>
+                28. Travelers must be physically and mentally fit for the trekking. It is compulsory to bring health certificates along with proper legal documents for trip approval, if asked.
+            </p>
+            <p>
+                29. If the flight is cancelled or get delayed due to fluctuate climate or any other causes, UFORangers is not responsible for the extra expenses or compensation. We can manage alternative arrangement on special request which may demand other extra cost.
+            </p>
+            <p>
+                30. We have displayed the authentic, genuine and accurate information on our official website and brochure. If any mistake, incomplete or wrong information is seen, please inform us on time.
+            </p>
+            <p>
+                31. Please read all the above mentioned ‘Terms and Conditions’ before making the bookings. You must abide these conditions if you dream to trek in the Himalayas with UFORangers.
+            </p>
+        </div>
+    </div>
+</div>
+<!--End of About Area -->
+
+
+{% endblock about %}

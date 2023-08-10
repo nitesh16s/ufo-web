@@ -1,0 +1,51 @@
+<div class="row">
+    <div class="col-md-5">
+        Departure Dates<br>
+        <hr>
+        <div class="row">
+            <div class="col-md-12">
+                {% for schedule in schedules %}
+                <p>
+                    {{schedule.start_date|date:"d M, Y"}} - {{schedule.end_date|date:"d M, Y"}}
+                </p>
+                <hr> {% endfor %}
+            </div>
+        </div>
+    </div>
+    <div class="col-md-2">Price<br>
+        <hr>
+        <div class="row">
+            <div class="col-md-12">
+                {% for schedule in schedules %}
+                <p>
+                    USD {{package.cost}}
+                </p>
+                <hr> {% endfor %}
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">Available Seats<br>
+        <hr>
+        <div class="row">
+            <div class="col-md-12">
+                {% for schedule in schedules %}
+                <a style="cursor: pointer; font-weight: 500; color: #1b293a;" id="availableSeats{{schedule.id}}" onclick="availableSeats({{package.id}}, {{schedule.id}})">Enquire
+                        Now</a>
+                <hr> {% endfor %}
+            </div>
+        </div>
+    </div>
+    <div class="col-md-2">Action<br>
+        <hr>
+        <div class="row">
+            <div class="col-md-12">
+                {% for schedule in schedules %}
+                <a href="{% url 'book_package' package.slug schedule.id %}">
+                    <button id="book-seat{{schedule.id}}" class="btn btn-outline-info">Book now
+                        </button>
+                </a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
