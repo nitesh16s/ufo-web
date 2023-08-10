@@ -163,3 +163,8 @@ media
 media/
 
 # End of https://www.toptal.com/developers/gitignore/api/django
+
+# seed
+seed.json
+url_mapping
+new_data.json
